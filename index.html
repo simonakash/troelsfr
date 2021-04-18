@@ -1,0 +1,1102 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		
+		<!-- Company Name -->
+		<title>Add Apps to Slack | Apps and Integrations | Slack App Directory</title>
+		
+		<!-- Company Icon -->
+		<link rel="icon" href="images/logo.png">
+		
+		<!-- Google Font  -->
+		<!-- Tailwind-Css -->
+		<link rel="stylesheet" href="css/tailwind.min.css">
+		
+	</head>
+	<body>
+		<header class="fixed right-0 top-0 left-0 z-50">
+			<div x-data="{humberger: false}">
+				<!-- == Mobile nav == -->
+				<nav class="relative z-50" x-show.transition="humberger"
+					@click.away="humberger = false"
+				>
+					<div class="fixed relative top-0 left-0 w-screen h-screen">
+						<div class="bg-blue-800 h-3/4 bg-opacity-95 flex items-center px-10">
+							<button @click.prevent="humberger = false">
+								<span  class="transform transition duration-700 absolute hover:rotate-180 right-8 text-white top-4">
+									<svg  xmlns="http://www.w3.org/2000/svg" class="h-9 w-9" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+										<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+									</svg>
+								</span>
+							</button>
+							<!-- == Ul menu == -->
+							<ul class="space-y-8">
+								<li>
+									<a class=" p-2 text-white text-3xl" href="#">Browse</a>
+								</li>
+								<li>
+									<a class=" p-2 text-white text-3xl" href="#">Manage </a>
+								</li>
+								<li>
+									<a class=" p-2 text-white text-3xl" href="#">Build  </a>
+								</li>
+							</ul>
+						</div>
+						<div class="bg-indigo-800 h-1/4 bg-opacity-95 flex items-center px-10">
+							<a class=" flex items-center space-x-2" href="#">
+								<span class=" p-2 rounded-md text-black bg-white">
+									<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+										<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+									</svg>
+								</span>
+								<span class=" text-white text-xl font-medium">Sign in to another workspace</span>
+							</a>
+						</div>
+					</div>
+				</nav>
+				<!-- == manin nac == -->
+				<nav class="flex justify-between items-center text-center text-white lg:px-8 sm:px-6 px-2 py-2 bg-white relative">
+					<!-- ==Logo == -->
+					<a class="text-yellow-500 sm:text-4xl text-3xl font-bold" href="index.html">
+						<img class="w-full h-14" src="images/slack_app_directory_logo.svg" alt="">
+					</a>
+					<div class=" flex justify-center items-center space-x-3">
+						<!-- == menu and search button == -->
+						<div x-data="{search:false}">
+							<div class=" flex md:hidden space-x-3">
+								<button @click="search=true" class="text-gray-400 hover:text-gray-500 focus:outline-none">
+									<svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+										<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+									</svg>
+								</button>
+							</div>
+							<!-- == Search Bar == -->
+							<div x-show.transition="search" class=" fixed left-0 top-0 w-full flex justify-between items-center md:px-8 sm:px-6 px-2 bg-white py-2 space-x-4">
+								<button class="text-gray-400 hover:text-gray-500 focus:outline-none">
+									<svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+										<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+									</svg>
+								</button>
+								<input class="w-full p-4 text-gray-900 py-3 placeholder-gray-500 rounded-md  shadow-md focus:ring focus:border-gray-400 outline-none duration-300 font-semibold text-lg" type="text"placeholder="Search App Directory">
+								<button @click="search=false" class="text-gray-400 hover:text-gray-500 focus:outline-none">
+									<svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+										<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" />
+									</svg>
+								</button>
+							</div>
+						</div>
+						<!-- == main menu li == -->
+						<div class="flex space-x-6 md:block hidden" x-data=" {active :'active1'}">
+							<ul class="space-x-4 flex items-center">
+								<li>
+									<a class="text-gray-400 hover:text-gray-600 p-2 hover:bg-gray-200 rounded font-semibold duration-300" href="#">Browse</a>
+								</li>
+								<li>
+									<a class="text-gray-400 hover:text-gray-600 p-2 hover:bg-gray-200 rounded font-semibold duration-300" href="#">Manage </a>
+								</li>
+								<li>
+									<a class="text-gray-400 hover:text-gray-600 p-2 hover:bg-gray-200 rounded font-semibold duration-300" href="#">Build  </a>
+								</li>
+								<li>
+									<a class="text-gray-400 hover:text-gray-600 p-2 hover:bg-gray-200 rounded font-semibold duration-300 whitespace-nowrap" href="#">Sign in </a>
+								</li>
+								<li>
+									<a class="text-gray-500 border border-gray-400 hover:text-gray-700 p-2 hover:shadow-md rounded-md font-semibold duration-300 whitespace-nowrap" href="#">Create Workspace</a>
+								</li>
+							</ul>
+						</div>
+						<button class="border-2 text-gray-400 rounded hover:text-gray-500 px-2 focus:outline-none py-1 font-semibold md:hidden block" @click.prevent="humberger=true">menu</button>
+					</div>
+				</nav>
+			</div>
+		</header>
+		<main>
+			<!-- == Section 001 == -->
+			<section class="pt-10 bg-cover bg-center bg-no-repeat" style="background-image:url(images/background_center_2.0@2x.png)">
+				<div class=" py-20 grid lg:grid-cols-2 gap-4 lg:text-left text-center">
+					<!-- == herro text == -->
+					<div class="xl:pl-40 md:pl-20 sm:pl-10 pl-0 bg-left-bottom bg-no-repeat bg-contain" style="background-image:url(images/background_left.png)">
+						<h1 class=" font-extrabold sm:text-4xl text-3xl tracking-tight">Add apps, get work done</h1>
+						<p class=" sm:text-xl text-md py-4  tracking-wider ">Pull reports, start calls, file tickets,<br> and more — right within Slack.</p>
+						<div class="mt-3">
+							<a class=" p-2 px-4 bg-green-700 rounded text-xl text-white font-bold hover:shadow-2xl" href="#">Get Essential Apps</a>
+						</div>
+					</div>
+					<div class=" lg:block hidden">
+						<div x-data="{ tab:'tab1'}" class="grid grid-cols-5 bg-no-repeat bg-right-bottom xl:pr-40 md:pr-20 sm:pr-10 pr-5" style="background-image:url(images/background_squares@2x.png)">
+							<!-- == Icon Href == -->
+							<div class=" col-span-1">
+								<ul>
+									<li class=" relative">
+										<a href="#">
+											<img @click.prevent="tab='tab1'":class="{'scale-110 shadow-xl border-2 duration-300': tab==='tab1'}" class=" border transform rounded-xl p-1 h-14 w-14" src="images/1431340572002_5b33ac427113b206abee_96.png" alt="">
+										</a>
+									</li>
+									<li class=" relative pt-6">
+										<a href="#">
+											<img @click.prevent="tab='tab2'":class="{'scale-110 shadow-xl border-2 duration-300': tab==='tab2'}" class=" border transform rounded-xl p-1 h-14 w-14" src="images/icon_zoom@2x.png" alt="">
+										</a>
+									</li>
+									<li class=" relative pt-6">
+										<a href="#">
+											<img @click.prevent="tab='tab3'":class="{'scale-110 shadow-xl border-2 duration-300': tab==='tab3'}" class=" border transform rounded-xl p-1 h-14 w-14" src="images/493753869479_4b703f4119efe3d7d0ff_96.png" alt="">
+										</a>
+									</li>
+									<li class=" relative pt-6">
+										<a href="#">
+											<img @click.prevent="tab='tab4'":class="{'scale-110 shadow-xl border-2 duration-300': tab==='tab4'}" class=" border transform rounded-xl p-1 h-14 w-14" src="images/icon_salesforce@2x.png" alt="">
+										</a>
+									</li>
+								</ul>
+							</div>
+							<div class=" border border-b-0 rounded col-span-4 p-6  group h-60 overflow-hidden">
+								<!-- == content 001 == -->
+								<div>
+									<a href="#">
+										<h1 x-show.transition.in.duration.600ms.out.duration.600ms=" tab==='tab1'" class=" tracking-wide font-semibold group-hover:text-blue-400">Share and search files...</h1>
+										<div x-show.transition.in.duration.600ms.out.duration.600ms=" tab==='tab1'" class="flex my-4 items-center transform-gpu":class="{'delay-100': tab==='tab1'}">
+											<img class="h-10 w-10 rounded" src="images/profile_drive@2x.png" alt="">
+											<div class="px-3">
+												<h3 class="font-semibold">Lisa Zhang</h3>
+												<p>shared this file</p>
+											</div>
+										</div>
+										<img x-show.transition.in.duration.600ms.out.duration.600ms=" tab==='tab1'" :class="{'delay-700': tab==='tab1'}" src="images/response_drive_2.0@2x.png" alt="">
+									</a>
+								</div>
+								<!-- == content 002 == -->
+								<div>
+									<a class="" href="#">
+										<h1 x-show.transition.in.duration.600ms.out.duration.600ms=" tab==='tab2'" class=" tracking-wide font-semibold group-hover:text-blue-400">Start an instant meeting...</h1>
+										<div x-show.transition.in.duration.600ms.out.duration.600ms=" tab==='tab2'" class="flex my-4 items-center":class="{'delay-100': tab==='tab2'}">
+											<img class="h-10 w-10 rounded" src="images/profile_zoom@2x.png" alt="">
+											<div class="px-3">
+												<h3 class="font-semibold">Bruce Olson</h3>
+												<p>/zoom meeting Summer Offsite Prep</p>
+											</div>
+										</div>
+										<img x-show.transition.in.duration.600ms.out.duration.600ms=" tab==='tab2'" :class="{'delay-700': tab==='tab2'}" src="images/response_zoom_4.0@2x.png" alt="">
+									</a>
+								</div>
+								<!-- == content 003 == -->
+								<div>
+									<a class="" href="#">
+										<h1 x-show.transition.in.duration.600ms.out.duration.600ms=" tab==='tab3'" class=" tracking-wide font-semibold group-hover:text-blue-400">Preview issues and get updates..</h1>
+										<div x-show.transition.in.duration.600ms.out.duration.600ms=" tab==='tab3'" class="flex my-4 items-center":class="{'delay-100': tab==='tab3'}">
+											<img class="h-10 w-10 rounded" src="images/profile_jira_2.0@2x.png" alt="">
+											<div class="pl-3">
+												<h3 class="font-semibold">Angela Zamfir</h3>
+												<p>Can we get ISSUE-123 prioritized today?</p>
+											</div>
+										</div>
+										<img x-show.transition.in.duration.600ms.out.duration.600ms=" tab==='tab3'" :class="{'delay-700': tab==='tab3'}" src="images/response_jira_2.0@2x.png" alt="">
+									</a>
+								</div>
+								<!-- == content 004 == -->
+								<div>
+									<a class="" href="#">
+										<h1 x-show.transition.in.duration.600ms.out.duration.600ms=" tab==='tab4'" class=" tracking-wide font-semibold group-hover:text-blue-400">Quickly find account details...</h1>
+										<div x-show.transition.in.duration.600ms.out.duration.600ms=" tab==='tab4'" class="flex my-4 items-center":class="{'delay-100': tab==='tab4'}">
+											<img class="h-10 w-10 rounded" src="images/profile_salesforce@2x.png" alt="">
+											<div class="px-3">
+												<h3 class="font-semibold">Arcadio Buendía</h3>
+												<p>/salesforce sunny farms</p>
+											</div>
+										</div>
+										<img x-show.transition.in.duration.600ms.out.duration.600ms=" tab==='tab4'" :class="{'delay-700': tab==='tab4'}" src="images/response_salesforce_2.0@2x.png" alt="">
+									</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class=" grid grid-cols-8 gap-0 w-full h-1">
+					<div class="bg-yellow-600"></div>
+					<div class="bg-black"></div>
+					<div class="bg-red-600"></div>
+					<div class="bg-green-800"></div>
+					<div class="bg-blue-800"></div>
+					<div class="bg-yellow-700"></div>
+					<div class="bg-black"></div>
+					<div class="bg-red-600"></div>
+				</div>
+			</section>
+			<!-- == Section 002 == -->
+			<section>
+				<div x-data="{catagory: false}" class=" lg:hidden block pb-4">
+					<div @click.prevent="catagory= true" class=" flex justify-between items-center border-b hover:shadow duration-300 p-3 px-4">
+						<h1 class=" text-gray-500 font-semibold">View all categories</h1>
+						<span>
+							<svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7  text-gray-500" viewBox="0 0 20 20" fill="currentColor">
+								<path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" />
+							  </svg>
+						</span>
+					</div>
+					<!-- == Ul 003 == -->
+					<div x-show.transition="catagory" class="fixed z-50 overflow-y-auto h-full top-0 left-0 bg-white w-full">
+						<div @click.prevent="catagory= false" class=" flex justify-between items-center border-b hover:shadow duration-300 p-3 px-8">
+							<h1 class=" text-xl font-bold text-gray-500">Hide all categories</h1>
+							<span>
+								<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-500" viewBox="0 0 20 20" fill="currentColor">
+									<path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd" />
+								  </svg>
+							</span>
+						</div>
+						<ul class=" space-y-4 pb-8 p-4">
+							<li class="duration-300 hover:border-2 hover:border-blue-600 hover:bg-green-300 hover:text-white p-2 text-md font-medium text-gray-500 rounded">
+								<a class="px-2" href="#">Analytics</a>
+							</li>
+							<li class="mt-4 duration-300 hover:border-2 hover:border-blue-600 hover:bg-green-300 hover:text-white p-2 text-md font-medium text-gray-500 rounded">
+								<a class="px-2" href="#">Communication</a>
+							</li>
+							<li class="mt-4 duration-300 hover:border-2 hover:border-blue-600 hover:bg-green-300 hover:text-white p-2 text-md font-medium text-gray-500 rounded">
+								<a class="px-2" href="#">Customer Support</a>
+							</li>
+							<li class="mt-4 duration-300 hover:border-2 hover:border-blue-600 hover:bg-green-300 hover:text-white p-2 text-md font-medium text-gray-500 rounded">
+								<a class="px-2" href="#">Design</a>
+							</li>
+							<li class="mt-4 duration-300 hover:border-2 hover:border-blue-600 hover:bg-green-300 hover:text-white p-2 text-md font-medium text-gray-500 rounded">
+								<a class="px-2" href="#">Developer Tools</a>
+							</li>
+							<li class="mt-4 duration-300 hover:border-2 hover:border-blue-600 hover:bg-green-300 hover:text-white p-2 text-md font-medium text-gray-500 rounded">
+								<a class="px-2" href="#">File Management</a>
+							</li>
+							<li class="mt-4 duration-300 hover:border-2 hover:border-blue-600 hover:bg-green-300 hover:text-white p-2 text-md font-medium text-gray-500 rounded">
+								<a class="px-2" href="#">Health & Wellness</a>
+							</li>
+							<li class="mt-4 duration-300 hover:border-2 hover:border-blue-600 hover:bg-green-300 hover:text-white p-2 text-md font-medium text-gray-500 rounded">
+								<a class="px-2" href="#">HR & Team Culture</a>
+							</li>
+							<li class="mt-4 duration-300 hover:border-2 hover:border-blue-600 hover:bg-green-300 hover:text-white p-2 text-md font-medium text-gray-500 rounded">
+								<a class="px-2" href="#">Marketing</a>
+							</li>
+							<li class="mt-4 duration-300 hover:border-2 hover:border-blue-600 hover:bg-green-300 hover:text-white p-2 text-md font-medium text-gray-500 rounded">
+								<a class="px-2" href="#">Office Management</a>
+							</li>
+							<li class="mt-4 duration-300 hover:border-2 hover:border-blue-600 hover:bg-green-300 hover:text-white p-2 text-md font-medium text-gray-500 rounded">
+								<a class="px-2" href="#">Finance</a>
+							</li>
+							<li class="mt-4 duration-300 hover:border-2 hover:border-blue-600 hover:bg-green-300 hover:text-white p-2 text-md font-medium text-gray-500 rounded">
+								<a class="px-2" href="#">Productivity</a>
+							</li>
+							<li class="mt-4 duration-300 hover:border-2 hover:border-blue-600 hover:bg-green-300 hover:text-white p-2 text-md font-medium text-gray-500 rounded">
+								<a class="px-2" href="#">Project Management</a>
+							</li>
+							<li class="mt-4 duration-300 hover:border-2 hover:border-blue-600 hover:bg-green-300 hover:text-white p-2 text-md font-medium text-gray-500 rounded">
+								<a class="px-2" href="#">Sales</a>
+							</li>
+							<li class="mt-4 duration-300 hover:border-2 hover:border-blue-600 hover:bg-green-300 hover:text-white p-2 text-md font-medium text-gray-500 rounded">
+								<a class="px-2" href="#">Security & Compliance</a>
+							</li>
+							<li class="mt-4 duration-300 hover:border-2 hover:border-blue-600 hover:bg-green-300 hover:text-white p-2 text-md font-medium text-gray-500 rounded">
+								<a class="px-2" href="#">Social & Fun</a>
+							</li>
+							<li class="mt-4 duration-300 hover:border-2 hover:border-blue-600 hover:bg-green-300 hover:text-white p-2 text-md font-medium text-gray-500 rounded">
+								<a class="px-2" href="#">Travel</a>
+							</li>
+							<li class="mt-4 duration-300 hover:border-2 hover:border-blue-600 hover:bg-green-300 hover:text-white p-2 text-md font-medium text-gray-500 rounded">
+								<a class="px-2" href="#">Voice & Video</a>
+							</li>
+							<li class="mt-4 duration-300 hover:border-2 hover:border-blue-600 hover:bg-green-300 hover:text-white p-2 text-md font-medium text-gray-500 rounded">
+								<a class="px-2" href="#">Media & News</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+				<div class=" lg:grid lg:grid-cols-12 gap-4 xl:px-48 sm:px-8 px-4 lg:py-10">
+					<!-- == grid 001 == -->
+					<div class=" col-span-3 lg:block hidden">
+						<!-- == Ul 001 == -->
+						<ul class=" space-y-2 pb-8">
+							<li class="pb-2 text-xl font-semibold px-2">Staff Picks</li>
+							<li class=" duration-300 hover:border-2 hover:border-blue-600 hover:bg-blue-100 rounded">
+								<a class="px-2" href="#">Featured</a>
+							</li>
+							<li class="mt-4 duration-300 hover:border-2 hover:border-blue-600 hover:bg-blue-100 rounded">
+								<a class="px-2" href="#">Enterprise-ready apps</a>
+							</li>
+							<li class="mt-4 duration-300 hover:border-2 hover:border-blue-600 hover:bg-blue-100 rounded">
+								<a class="px-2" href="working-from-home.html">Working from home</a>
+							</li>
+							<li class="mt-4 duration-300 hover:border-2 hover:border-blue-600 hover:bg-blue-100 rounded">
+								<a class="px-2" href="#">Daily Tools</a>
+							</li>
+							<li class="mt-4 duration-300 hover:border-2 hover:border-blue-600 hover:bg-blue-100 rounded">
+								<a class="px-2" href="#">Essential Apps</a>
+							</li>
+							<li class="mt-4 duration-300 hover:border-2 hover:border-blue-600 hover:bg-blue-100 rounded">
+								<a class="px-2" href="#">New & Noteworthy</a>
+							</li>
+							<li class="mt-4 duration-300 hover:border-2 hover:border-blue-600 hover:bg-blue-100 rounded">
+								<a class="px-2" href="#">Brilliant Bots</a>
+							</li>
+						</ul>
+						<!-- == Ul 002 == -->
+						<ul class=" space-y-2 pb-8">
+							<li class="text-xl pb-2 font-semibold px-2">App Collections</li>
+							<li class=" duration-300 hover:border-2 hover:border-blue-600 hover:bg-blue-100 rounded">
+								<a class="px-2" href="#">Office 365</a>
+							</li>
+							<li class="mt-4 duration-300 hover:border-2 hover:border-blue-600 hover:bg-blue-100 rounded">
+								<a class="px-2" href="#">G Suite</a>
+							</li>
+							<li class="mt-4 duration-300 hover:border-2 hover:border-blue-600 hover:bg-blue-100 rounded">
+								<a class="px-2" href="#">Atlassian</a>
+							</li>
+							<li class="mt-4 duration-300 hover:border-2 hover:border-blue-600 hover:bg-blue-100 rounded">
+								<a class="px-2" href="#">External Collaboration Apps</a>
+							</li>
+							<li class="mt-4 duration-300 hover:border-2 hover:border-blue-600 hover:bg-blue-100 rounded">
+								<a class="px-2" href="#">Working from home</a>
+							</li>
+							<li class="mt-4 duration-300 hover:border-2 hover:border-blue-600 hover:bg-blue-100 rounded">
+								<a class="px-2" href="#">Shortcuts</a>
+							</li>
+							<li class="mt-4 duration-300 hover:border-2 hover:border-blue-600 hover:bg-blue-100 rounded">
+								<a class="px-2" href="#">Workflows</a>
+							</li>
+						</ul>
+						<!-- == Ul 003 == -->
+						<ul class=" space-y-2 pb-8">
+							<li class="text-xl pb-2 font-semibold px-2">Categories</li>
+							<li class="duration-300 hover:border-2 hover:border-blue-600 hover:bg-blue-100 rounded">
+								<a class="px-2" href="#">Analytics</a>
+							</li>
+							<li class="mt-4 duration-300 hover:border-2 hover:border-blue-600 hover:bg-blue-100 rounded">
+								<a class="px-2" href="#">Communication</a>
+							</li>
+							<li class="mt-4 duration-300 hover:border-2 hover:border-blue-600 hover:bg-blue-100 rounded">
+								<a class="px-2" href="#">Customer Support</a>
+							</li>
+							<li class="mt-4 duration-300 hover:border-2 hover:border-blue-600 hover:bg-blue-100 rounded">
+								<a class="px-2" href="#">Design</a>
+							</li>
+							<li class="mt-4 duration-300 hover:border-2 hover:border-blue-600 hover:bg-blue-100 rounded">
+								<a class="px-2" href="#">Developer Tools</a>
+							</li>
+							<li class="mt-4 duration-300 hover:border-2 hover:border-blue-600 hover:bg-blue-100 rounded">
+								<a class="px-2" href="#">File Management</a>
+							</li>
+							<li class="mt-4 duration-300 hover:border-2 hover:border-blue-600 hover:bg-blue-100 rounded">
+								<a class="px-2" href="#">Health & Wellness</a>
+							</li>
+							<li class="mt-4 duration-300 hover:border-2 hover:border-blue-600 hover:bg-blue-100 rounded">
+								<a class="px-2" href="#">HR & Team Culture</a>
+							</li>
+							<li class="mt-4 duration-300 hover:border-2 hover:border-blue-600 hover:bg-blue-100 rounded">
+								<a class="px-2" href="#">Marketing</a>
+							</li>
+							<li class="mt-4 duration-300 hover:border-2 hover:border-blue-600 hover:bg-blue-100 rounded">
+								<a class="px-2" href="#">Office Management</a>
+							</li>
+							<li class="mt-4 duration-300 hover:border-2 hover:border-blue-600 hover:bg-blue-100 rounded">
+								<a class="px-2" href="#">Finance</a>
+							</li>
+							<li class="mt-4 duration-300 hover:border-2 hover:border-blue-600 hover:bg-blue-100 rounded">
+								<a class="px-2" href="#">Productivity</a>
+							</li>
+							<li class="mt-4 duration-300 hover:border-2 hover:border-blue-600 hover:bg-blue-100 rounded">
+								<a class="px-2" href="#">Project Management</a>
+							</li>
+							<li class="mt-4 duration-300 hover:border-2 hover:border-blue-600 hover:bg-blue-100 rounded">
+								<a class="px-2" href="#">Sales</a>
+							</li>
+							<li class="mt-4 duration-300 hover:border-2 hover:border-blue-600 hover:bg-blue-100 rounded">
+								<a class="px-2" href="#">Security & Compliance</a>
+							</li>
+							<li class="mt-4 duration-300 hover:border-2 hover:border-blue-600 hover:bg-blue-100 rounded">
+								<a class="px-2" href="#">Social & Fun</a>
+							</li>
+							<li class="mt-4 duration-300 hover:border-2 hover:border-blue-600 hover:bg-blue-100 rounded">
+								<a class="px-2" href="#">Travel</a>
+							</li>
+							<li class="mt-4 duration-300 hover:border-2 hover:border-blue-600 hover:bg-blue-100 rounded">
+								<a class="px-2" href="#">Voice & Video</a>
+							</li>
+							<li class="mt-4 duration-300 hover:border-2 hover:border-blue-600 hover:bg-blue-100 rounded">
+								<a class="px-2" href="#">Media & News</a>
+							</li>
+						</ul>
+					</div>
+					<!-- == grid 001 == -->
+					<div class=" col-span-9">
+						<!-- == == -->
+						<div class="relative">
+							<input class="w-full shadow-md focus:ring focus:border-gray-400 outline-none duration-300 placeholder-black hover:shadow-none border pl-10 p-2 rounded-md placeholder-gray-600" type="text" placeholder="Find a new app, or a service you already use.">
+							<span class=" absolute top-3 left-3">
+								<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+								  </svg>
+							</span>
+						</div>
+						<!-- == == -->
+						<div class="border rounded my-8 shadow cursor-pointer">
+							<div class="pb-2 bg-cover bg-center bg-no-repeat h-48" style="background-image:url(images/external_collab_banner.png)"></div>
+							<div class=" p-4">
+								<h4 class=" font-bold text-xl overflow-ellipsis overflow-hidden whitespace-nowrap"> Discover apps for Slack Connect </h4>
+								<p class=" text-gray-500 overflow-ellipsis overflow-hidden whitespace-nowrap">Start Zoom calls, share Calendly links, collaborate on Crossbeam joint opportunities, and more.</p>
+							</div>
+						</div>
+						<!-- == == -->
+						<div class=" md:block hidden">
+							<div class=" grid grid-cols-3 gap-4">
+								<div class="cursor-pointer border rounded-lg hover:shadow-xl duration-300">
+									<div class="bg-gradient-to-br from-blue-900 to-blue-300 p-8 rounded-t-lg">
+										<img class="rounded-2xl mx-auto" src="images/936120943570_396303cdc6fb95d7ade0_96.png" alt="">
+									</div>
+									<div class="p-4 mt-2">
+										<h4 class=" font-bold text-xl">HelpDesk+</h4>
+										<p class=" text-gray-500 overflow-ellipsis overflow-hidden whitespace-nowrap">Customer Support</p>
+									</div>
+								</div>
+								<div class="cursor-pointer border rounded-lg hover:shadow-xl duration-300">
+									<div class="bg-gradient-to-br from-blue-600 to-blue-400 p-8 rounded-t-lg">
+										<img class="mx-auto rounded-2xl" src="images/493753869479_4b703f4119efe3d7d0ff_96.png" alt="">
+									</div>
+									<div class="p-4 mt-2">
+										<h4 class=" font-bold text-xl">Developer Tools</h4>
+										<p class=" text-gray-500 overflow-ellipsis overflow-hidden whitespace-nowrap">Developer Tools</p>
+									</div>
+								</div>
+								<div class="cursor-pointer border rounded-lg hover:shadow-xl duration-300">
+									<div class="bg-gradient-to-br from-blue-600 to-blue-400 p-8 rounded-t-lg">
+										<img class="mx-auto rounded-2xl" src="images/1615357925232_31b5b5e7adf0748feb84_96.png" alt="">
+									</div>
+									<div class="p-4 mt-2">
+										<h4 class=" font-bold text-xl">Proper</h4>
+										<p class=" text-gray-500 overflow-ellipsis overflow-hidden whitespace-nowrap">HR & Team Culture</p>
+									</div>
+								</div>
+							</div>
+						</div>
+						<!-- == == -->
+						<div class=" py-4  md:hidden block">
+							<div class=" flex justify-between py-6">
+								<h1 class=" text-xl font-bold">Featured Apps</h1>
+								<a class="text-md text-blue-900" href="#">See all</a>
+							</div>
+							<div class=" grid sm:grid-cols-3 gap-4">
+								<div class=" cursor-pointer border rounded-lg hover:shadow-xl duration-300 flex items-center p-3">
+									<img class="rounded-md h-12 w-12" src="images/936120943570_396303cdc6fb95d7ade0_96.png" alt="">
+									<div class="pl-4 overflow-hidden ">
+										<h4 class=" font-bold">HelpDesk+</h4>
+										<p class=" text-gray-500 overflow-ellipsis overflow-hidden whitespace-nowrap">Customer Support</p>
+									</div>
+								</div>
+								<div class=" cursor-pointer border rounded-lg hover:shadow-xl duration-300 flex items-center p-3">
+									<img class="rounded-md h-12 w-12" src="images/493753869479_4b703f4119efe3d7d0ff_96.png" alt="">
+									<div class="pl-4 overflow-hidden text-ellipsis">
+										<h4 class=" font-bold overflow-ellipsis overflow-hidden whitespace-nowrap">Jira Cloud</h4>
+										<p class=" text-gray-500 overflow-ellipsis overflow-hidden whitespace-nowrap">Developer Tools</p>
+									</div>
+								</div>
+								<div class=" cursor-pointer border rounded-lg hover:shadow-xl duration-300 flex items-center p-3">
+									<img class="rounded-md h-12 w-12" src="images/1615357925232_31b5b5e7adf0748feb84_96.png" alt="">
+									<div class="pl-4 overflow-hidden text-ellipsis">
+										<h4 class=" font-bold overflow-ellipsis overflow-hidden whitespace-nowrap">Proper</h4>
+										<p class=" text-gray-500 overflow-ellipsis overflow-hidden whitespace-nowrap">HR & Team Culture</p>
+									</div>
+								</div>
+							</div>
+						</div>
+						<!-- == == -->
+						<div class=" py-4">
+							<div class=" flex justify-between py-6">
+								<h1 class=" text-xl font-bold">Enterprise-ready apps</h1>
+								<a class="text-md text-blue-900" href="#">See all</a>
+							</div>
+							<div class=" grid sm:grid-cols-3 gap-4">
+								<div class=" cursor-pointer border rounded-lg hover:shadow-xl duration-300 flex items-center p-3">
+									<img class="rounded-md h-12 w-12" src="images/245295805989_06e77af1bfb8e3c81d4d_96.png" alt="">
+									<div class="pl-4 overflow-hidden ">
+										<h4 class=" font-bold">HelpDesk+</h4>
+										<p class=" text-gray-500 overflow-ellipsis overflow-hidden whitespace-nowrap">Customer Support</p>
+									</div>
+								</div>
+								<div class=" cursor-pointer border rounded-lg hover:shadow-xl duration-300 flex items-center p-3">
+									<img class="rounded-md h-12 w-12" src="images/384053245894_495b0d8bc7454e59a3c8_96.png" alt="">
+									<div class="pl-4 overflow-hidden text-ellipsis">
+										<h4 class=" font-bold overflow-ellipsis overflow-hidden whitespace-nowrap">Cisco Webex Meetings</h4>
+										<p class=" text-gray-500 overflow-ellipsis overflow-hidden whitespace-nowrap">Voice & Video</p>
+									</div>
+								</div>
+								<div class=" cursor-pointer border rounded-lg hover:shadow-xl duration-300 flex items-center p-3">
+									<img class="rounded-md h-12 w-12" src="images/841384091622_f7a1613a927df0040617_96.png" alt="">
+									<div class="pl-4 overflow-hidden text-ellipsis">
+										<h4 class=" font-bold overflow-ellipsis overflow-hidden whitespace-nowrap">Amazon Chime Meetings</h4>
+										<p class=" text-gray-500 overflow-ellipsis overflow-hidden whitespace-nowrap">Voice & Video</p>
+									</div>
+								</div>
+							</div>
+						</div>
+						<!-- == == -->
+						<div class=" py-4">
+							<div class=" flex justify-between py-6">
+								<h1 class=" text-xl font-bold">Working from home</h1>
+								<a class="text-md text-blue-900" href="#">See all</a>
+							</div>
+							<div class=" grid sm:grid-cols-3 gap-4">
+								<!-- == == -->
+								<div class=" cursor-pointer border rounded-lg hover:shadow-xl duration-300 flex items-center p-3">
+									<img class="rounded-md h-12 w-12" src="images/1110341098195_d28d2e6b0627058c05d0_96.png" alt="">
+									<div class="pl-4 overflow-hidden">
+										<h4 class=" font-bold">Trivia</h4>
+										<p class=" text-gray-500 overflow-ellipsis overflow-hidden whitespace-nowrap">HR & Team Culture</p>
+									</div>
+								</div>
+								<!-- == == -->
+								<div class=" cursor-pointer border rounded-lg hover:shadow-xl duration-300 p-3">
+									<a class="flex items-center" href="loom.html">
+										<img class="rounded-md h-12 w-12" src="images/1523833081063_159cf989d1cbf0ecc5c9_96.png" alt="">
+										<div class="pl-4 overflow-hidden text-ellipsis">
+											<h4 class=" font-bold overflow-ellipsis overflow-hidden whitespace-nowrap">Loom</h4>
+											<p class=" text-gray-500 overflow-ellipsis overflow-hidden whitespace-nowrap">Communication</p>
+										</div>
+									</a>
+								</div>
+								<!-- == == -->
+								<div class=" cursor-pointer border rounded-lg hover:shadow-xl duration-300 flex items-center p-3">
+									<img class="rounded-md h-12 w-12" src="images/1247741304785_28de1a5980380c25f310_96.png" alt="">
+									<div class="pl-4 overflow-hidden text-ellipsis">
+										<h4 class=" font-bold overflow-ellipsis overflow-hidden whitespace-nowrap">Asana</h4>
+										<p class=" text-gray-500 overflow-ellipsis overflow-hidden whitespace-nowrap">Productivity</p>
+									</div>
+								</div>
+								<!-- == == -->
+								<div class=" cursor-pointer border rounded-lg hover:shadow-xl duration-300 flex items-center p-3">
+									<img class="rounded-md h-12 w-12" src="images/351412048224_9f4cd62b61d0706e9a96_96.png" alt="">
+									<div class="pl-4 overflow-hidden">
+										<h4 class=" font-bold">monday.com</h4>
+										<p class=" text-gray-500 overflow-ellipsis overflow-hidden whitespace-nowrap">Communication</p>
+									</div>
+								</div>
+								<!-- == == -->
+								<div class=" cursor-pointer border rounded-lg hover:shadow-xl duration-300 flex items-center p-3">
+									<img class="rounded-md h-12 w-12" src="images/300655353986_53957f8929256e832140_96.png" alt="">
+									<div class="pl-4 overflow-hidden text-ellipsis">
+										<h4 class=" font-bold overflow-ellipsis overflow-hidden whitespace-nowrap">Disco</h4>
+										<p class=" text-gray-500 overflow-ellipsis overflow-hidden whitespace-nowrap">HR & Team Culture</p>
+									</div>
+								</div>
+								<!-- == == -->
+								<div class=" cursor-pointer border rounded-lg hover:shadow-xl duration-300 flex items-center p-3">
+									<img class="rounded-md h-12 w-12" src="images/1029135366341_79bd8407939a8c2d1a6d_96.png" alt="">
+									<div class="pl-4 overflow-hidden text-ellipsis">
+										<h4 class=" font-bold overflow-ellipsis overflow-hidden whitespace-nowrap">Snack 🍩</h4>
+										<p class=" text-gray-500 overflow-ellipsis overflow-hidden whitespace-nowrap">HR & Team Culture</p>
+									</div>
+								</div>
+							</div>
+						</div>
+						<!-- == == -->
+						<div class=" py-4">
+							<div class=" flex justify-between py-6">
+								<h1 class=" text-xl font-bold">Daily Tools</h1>
+								<a class="text-md text-blue-900" href="#">See all</a>
+							</div>
+							<div class=" grid sm:grid-cols-3 gap-4">
+								<!-- == == -->
+								<div class=" cursor-pointer border rounded-lg hover:shadow-xl duration-300 flex items-center p-3">
+									<img class="rounded-md h-12 w-12" src="images/1431340572002_5b33ac427113b206abee_96.png" alt="">
+									<div class="pl-4 overflow-hidden">
+										<h4 class=" font-bold">Google Drive</h4>
+										<p class=" text-gray-500 overflow-ellipsis overflow-hidden whitespace-nowrap">File Management</p>
+									</div>
+								</div>
+								<!-- == == -->
+								<div class=" cursor-pointer border rounded-lg hover:shadow-xl duration-300 flex items-center p-3">
+									<img class="rounded-md h-12 w-12" src="images/626148669510_848578d4c3743d545733_96.png" alt="">
+									<div class="pl-4 overflow-hidden text-ellipsis">
+										<h4 class=" font-bold overflow-ellipsis overflow-hidden whitespace-nowrap">OneDrive and SharePoint</h4>
+										<p class=" text-gray-500 overflow-ellipsis overflow-hidden whitespace-nowrap">File Management</p>
+									</div>
+								</div>
+								<!-- == == -->
+								<div class=" cursor-pointer border rounded-lg hover:shadow-xl duration-300 flex items-center p-3">
+									<img class="rounded-md h-12 w-12" src="images/789931495607_cc585a2ba3a192a9c371_96.png" alt="">
+									<div class="pl-4 overflow-hidden text-ellipsis">
+										<h4 class=" font-bold overflow-ellipsis overflow-hidden whitespace-nowrap">Box</h4>
+										<p class=" text-gray-500 overflow-ellipsis overflow-hidden whitespace-nowrap">File Management</p>
+									</div>
+								</div>
+								<!-- == == -->
+								<div class=" cursor-pointer border rounded-lg hover:shadow-xl duration-300 flex items-center p-3">
+									<img class="rounded-md h-12 w-12" src="images/608395662292_64108f1a3c1056b0d3c7_96.png" alt="">
+									<div class="pl-4 overflow-hidden">
+										<h4 class=" font-bold">Dropbox</h4>
+										<p class=" text-gray-500 overflow-ellipsis overflow-hidden whitespace-nowrap">File Management</p>
+									</div>
+								</div>
+								<!-- == == -->
+								<div class=" cursor-pointer border rounded-lg hover:shadow-xl duration-300 flex items-center p-3">
+									<img class="rounded-md h-12 w-12" src="images/1725636648368_d0b4f2eca0834b833cb6_96.png" alt="">
+									<div class="pl-4 overflow-hidden text-ellipsis">
+										<h4 class=" font-bold overflow-ellipsis overflow-hidden whitespace-nowrap">Google Calendar</h4>
+										<p class=" text-gray-500 overflow-ellipsis overflow-hidden whitespace-nowrap">Productivity</p>
+									</div>
+								</div>
+								<!-- == == -->
+								<div class=" cursor-pointer border rounded-lg hover:shadow-xl duration-300 flex items-center p-3">
+									<img class="rounded-md h-12 w-12" src="images/1838871109573_71ad0844bfc452d4fb6e_96.png" alt="">
+									<div class="pl-4 overflow-hidden text-ellipsis">
+										<h4 class=" font-bold overflow-ellipsis overflow-hidden whitespace-nowrap">Outlook Calendar</h4>
+										<p class=" text-gray-500 overflow-ellipsis overflow-hidden whitespace-nowrap">Productivity</p>
+									</div>
+								</div>
+							</div>
+						</div>
+						<!-- == == -->
+						<div class=" py-4">
+							<div class=" flex justify-between py-6">
+								<h1 class=" text-xl font-bold">Essential Apps</h1>
+								<a class="text-md text-blue-900" href="#">See all</a>
+							</div>
+							<div class=" grid sm:grid-cols-3 gap-4">
+								<!-- == == -->
+								<div class=" cursor-pointer border rounded-lg hover:shadow-xl duration-300 flex items-center p-3">
+									<img class="rounded-md h-12 w-12" src="images/1787648920661_8dda075526c469f7e058_96.png" alt="">
+									<div class="pl-4 overflow-hidden">
+										<h4 class=" font-bold">Clerk SMS</h4>
+										<p class=" text-gray-500 overflow-ellipsis overflow-hidden whitespace-nowrap">Customer Support</p>
+									</div>
+								</div>
+								<!-- == == -->
+								<div class=" cursor-pointer border rounded-lg hover:shadow-xl duration-300 flex items-center p-3">
+									<img class="rounded-md h-12 w-12" src="images/403895177205_5bba247da24a9129c161_96.png" alt="">
+									<div class="pl-4 overflow-hidden text-ellipsis">
+										<h4 class=" font-bold overflow-ellipsis overflow-hidden whitespace-nowrap">Zendesk</h4>
+										<p class=" text-gray-500 overflow-ellipsis overflow-hidden whitespace-nowrap">Customer Support</p>
+									</div>
+								</div>
+								<!-- == == -->
+								<div class=" cursor-pointer border rounded-lg hover:shadow-xl duration-300 flex items-center p-3">
+									<img class="rounded-md h-12 w-12" src="images/200850512066_2d5e268a3b71c87f969c_96.png" alt="">
+									<div class="pl-4 overflow-hidden text-ellipsis">
+										<h4 class=" font-bold overflow-ellipsis overflow-hidden whitespace-nowrap">Zapier</h4>
+										<p class=" text-gray-500 overflow-ellipsis overflow-hidden whitespace-nowrap">Productivity</p>
+									</div>
+								</div>
+								<!-- == == -->
+								<div class=" cursor-pointer border rounded-lg hover:shadow-xl duration-300 flex items-center p-3">
+									<img class="rounded-md h-12 w-12" src="images/930499194037_edf1022e3c58514cc8fa_96.png" alt="">
+									<div class="pl-4 overflow-hidden">
+										<h4 class=" font-bold overflow-ellipsis overflow-hidden whitespace-nowrap">Eventbot Calendar</h4>
+										<p class=" text-gray-500 overflow-ellipsis overflow-hidden whitespace-nowrap">Office Management</p>
+									</div>
+								</div>
+								<!-- == == -->
+								<div class=" cursor-pointer border rounded-lg hover:shadow-xl duration-300 flex items-center p-3">
+									<img class="rounded-md h-12 w-12" src="images/1094107866404_420cddbc5de50dc37644_96.png" alt="">
+									<div class="pl-4 overflow-hidden text-ellipsis">
+										<h4 class=" font-bold overflow-ellipsis overflow-hidden whitespace-nowrap">Doodle Bot</h4>
+										<p class=" text-gray-500 overflow-ellipsis overflow-hidden whitespace-nowrap">Productivity</p>
+									</div>
+								</div>
+							</div>
+						</div>
+						<!-- == == -->
+						<div class=" py-4">
+							<div class=" flex justify-between py-6">
+								<h1 class=" text-xl font-bold">New & Noteworthy</h1>
+								<a class="text-md text-blue-900" href="#">See all</a>
+							</div>
+							<div class=" grid sm:grid-cols-3 gap-4">
+								<!-- == == -->
+								<div class=" cursor-pointer border rounded-lg hover:shadow-xl duration-300 flex items-center p-3">
+									<img class="rounded-md h-12 w-12" src="images/1672299442166_12205c0bc79c1dbd7128_96.png" alt="">
+									<div class="pl-4 overflow-hidden">
+										<h4 class=" font-bold">Tara AI</h4>
+										<p class=" text-gray-500 overflow-ellipsis overflow-hidden whitespace-nowrap">Developer Tools</p>
+									</div>
+								</div>
+								<!-- == == -->
+								<div class=" cursor-pointer border rounded-lg hover:shadow-xl duration-300 flex items-center p-3">
+									<img class="rounded-md h-12 w-12" src="images/1583659678897_2b9db709fdb9fd6d3a30_96.png" alt="">
+									<div class="pl-4 overflow-hidden text-ellipsis">
+										<h4 class=" font-bold overflow-ellipsis overflow-hidden whitespace-nowrap">Surveys</h4>
+										<p class=" text-gray-500 overflow-ellipsis overflow-hidden whitespace-nowrap">HR & Team Culture</p>
+									</div>
+								</div>
+								<!-- == == -->
+								<div class=" cursor-pointer border rounded-lg hover:shadow-xl duration-300 flex items-center p-3">
+									<img class="rounded-md h-12 w-12" src="images/1840634439047_45499c560f800ef0a95e_96.png" alt="">
+									<div class="pl-4 overflow-hidden text-ellipsis">
+										<h4 class=" font-bold overflow-ellipsis overflow-hidden whitespace-nowrap">HypeUp</h4>
+										<p class=" text-gray-500 overflow-ellipsis overflow-hidden whitespace-nowrap">HR & Team Culture</p>
+									</div>
+								</div>
+								<!-- == == -->
+								<div class=" cursor-pointer border rounded-lg hover:shadow-xl duration-300 flex items-center p-3">
+									<img class="rounded-md h-12 w-12" src="images/1696128619843_3c8ca8a8fc8ad006b7a3_96.jpg" alt="">
+									<div class="pl-4 overflow-hidden">
+										<h4 class=" font-bold">Mya Bot</h4>
+										<p class=" text-gray-500 overflow-ellipsis overflow-hidden whitespace-nowrap">Customer Support</p>
+									</div>
+								</div>
+								<!-- == == -->
+								<div class=" cursor-pointer border rounded-lg hover:shadow-xl duration-300 flex items-center p-3">
+									<img class="rounded-md h-12 w-12" src="images/1716898968278_1bd82b0a8b2c3164f58b_96.png" alt="">
+									<div class="pl-4 overflow-hidden text-ellipsis">
+										<h4 class=" font-bold overflow-ellipsis overflow-hidden whitespace-nowrap">Pupster</h4>
+										<p class=" text-gray-500 overflow-ellipsis overflow-hidden whitespace-nowrap">Social & Fun</p>
+									</div>
+								</div>
+								<!-- == == -->
+								<div class=" cursor-pointer border rounded-lg hover:shadow-xl duration-300 flex items-center p-3">
+									<img class="rounded-md h-12 w-12" src="images/1685264747495_c524fa862a18a9717400_96.png" alt="">
+									<div class="pl-4 overflow-hidden text-ellipsis">
+										<h4 class=" font-bold overflow-ellipsis overflow-hidden whitespace-nowrap">Hot desk</h4>
+										<p class=" text-gray-500 overflow-ellipsis overflow-hidden whitespace-nowrap">Office Management</p>
+									</div>
+								</div>
+							</div>
+						</div>
+						<!-- == == -->
+						<div class=" py-4">
+							<div class=" flex justify-between py-6">
+								<h1 class=" text-xl font-bold">Brilliant Bots</h1>
+								<a class="text-md text-blue-900" href="#">See all</a>
+							</div>
+							<div class=" grid sm:grid-cols-3 gap-4">
+								<!-- == == -->
+								<div class=" cursor-pointer border rounded-lg hover:shadow-xl duration-300 flex items-center p-3">
+									<img class="rounded-md h-12 w-12" src="images/1651636633221_814f0119555faf73781e_96.png" alt="">
+									<div class="pl-4 overflow-hidden">
+										<h4 class=" font-bold">ServiceBot</h4>
+										<p class=" text-gray-500 overflow-ellipsis overflow-hidden whitespace-nowrap">Office Management</p>
+									</div>
+								</div>
+								<!-- == == -->
+								<div class=" cursor-pointer border rounded-lg hover:shadow-xl duration-300 flex items-center p-3">
+									<img class="rounded-md h-12 w-12" src="images/1096110290002_e2c832f788ea9c5348e3_96.png" alt="">
+									<div class="pl-4 overflow-hidden text-ellipsis">
+										<h4 class=" font-bold overflow-ellipsis overflow-hidden whitespace-nowrap">Schedule</h4>
+										<p class=" text-gray-500 overflow-ellipsis overflow-hidden whitespace-nowrap">Communication</p>
+									</div>
+								</div>
+								<!-- == == -->
+								<div class=" cursor-pointer border rounded-lg hover:shadow-xl duration-300 flex items-center p-3">
+									<img class="rounded-md h-12 w-12" src="images/328216116128_d9fe3c51ae200f35b369_96.png" alt="">
+									<div class="pl-4 overflow-hidden">
+										<h4 class="font-bold overflow-ellipsis overflow-hidden whitespace-nowrap">Adobe Creative Cloud</h4>
+										<p class=" text-gray-500 overflow-ellipsis overflow-hidden whitespace-nowrap">File Management</p>
+									</div>
+								</div>
+								<!-- == == -->
+								<div class=" cursor-pointer border rounded-lg hover:shadow-xl duration-300 flex items-center p-3">
+									<img class="rounded-md h-12 w-12" src="images/1502196273190_030425be68570f52fcbf_96.png" alt="">
+									<div class="pl-4 overflow-hidden">
+										<h4 class="font-bold overflow-ellipsis overflow-hidden whitespace-nowrap">Team Feedback by Inkrement</h4>
+										<p class=" text-gray-500 overflow-ellipsis overflow-hidden whitespace-nowrap">HR & Team Culture</p>
+									</div>
+								</div>
+								<!-- == == -->
+								<div class=" cursor-pointer border rounded-lg hover:shadow-xl duration-300 flex items-center p-3">
+									<img class="rounded-md h-12 w-12" src="images/221756642528_4922bf5e3a4d9e4f80fd_96.png" alt="">
+									<div class="pl-4 overflow-hidden text-ellipsis">
+										<h4 class=" font-bold overflow-ellipsis overflow-hidden whitespace-nowrap">Trello</h4>
+										<p class=" text-gray-500 overflow-ellipsis overflow-hidden whitespace-nowrap">Productivity</p>
+									</div>
+								</div>
+								<!-- == == -->
+								<div class=" cursor-pointer border rounded-lg hover:shadow-xl duration-300 flex items-center p-3">
+									<img class="rounded-md h-12 w-12" src="images/1685264747495_c524fa862a18a9717400_96.png" alt="">
+									<div class="pl-4 overflow-hidden text-ellipsis">
+										<h4 class="font-bold overflow-ellipsis overflow-hidden whitespace-nowrap">Automate.io</h4>
+										<p class=" text-gray-500 overflow-ellipsis overflow-hidden whitespace-nowrap">Developer Tools</p>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+		</main>
+		<!-- ==Footer Section == -->
+		<footer class=" border-t mt-20">
+			<div class=" md:hidden block py-10">
+				<div>
+					<!-- ==001 == -->
+					<div x-data="{accrodion1:false}" @click.away="accrodion1=false" class="p-4 py-3 md:p-0 md:border-0 border border-b-0">
+						<div  @click="accrodion1= !accrodion1" class=" cursor-pointer flex justify-between items-center">
+							<h4 class="text-red-500 md:pb-4 text-xs font-semibold">USING SLACK</h4>
+							<div>
+								<span x-show="!accrodion1">
+									<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-red-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+										<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+									  </svg>
+								</span>
+								<span x-show="accrodion1">
+									<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-red-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+										<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+									  </svg>
+								</span>
+							</div>
+						</div>
+						<ul x-show.transition="accrodion1" class="md:p-0 p-3 space-y-1">
+							<li>
+								<a class="text-gray-500 hover:text-gray-400 text-sm" href="#">Product</a>
+							</li>
+							<li>
+								<a class="text-gray-500 hover:text-gray-400 text-sm" href="#">Enterprise</a>
+							</li>
+							<li>
+								<a class="text-gray-500 hover:text-gray-400 text-sm" href="#">Pricing</a>
+							</li>
+							<li>
+								<a class="text-gray-500 hover:text-gray-400 text-sm" href="#">Support</a>
+							</li>
+							<li>
+								<a class="text-gray-500 hover:text-gray-400 text-sm" href="#">Slack Guides</a>
+							</li>
+							<li>
+								<a class="text-gray-500 hover:text-gray-400 text-sm" href="#">App Directory</a>
+							</li>
+							<li>
+								<a class="text-gray-500 hover:text-gray-400 text-sm" href="#">API</a>
+							</li>
+						</ul>
+					</div>
+					<!-- ==002 == -->
+					<div x-data="{accrodion2:false}"@click.away="accrodion2=false" class="p-4 py-3 md:p-0 md:border-0 border border-b-0">
+						<div @click="accrodion2= !accrodion2" class=" cursor-pointer flex justify-between items-center">
+							<h4 class="text-pink-500 md:pb-4 text-xs font-semibold flex">SLACK
+								<span>
+									<svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+										<path fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd" />
+									  </svg>
+								</span>
+							</h4>
+							<div>
+								<span x-show="!accrodion2">
+									<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-pink-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+										<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+									  </svg>
+								</span>
+								<span x-show="accrodion2">
+									<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-pink-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+										<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+									  </svg>
+								</span>
+							</div>
+						</div>
+						<ul x-show.transition="accrodion2" class="md:p-0 p-3 space-y-1">
+							<li>
+								<a class="text-gray-500 hover:text-gray-400 text-sm" href="#">Jobs</a>
+							</li>
+							<li>
+								<a class="text-gray-500 hover:text-gray-400 text-sm" href="#">Customers</a>
+							</li>
+							<li>
+								<a class="text-gray-500 hover:text-gray-400 text-sm" href="#">Developers</a>
+							</li>
+							<li>
+								<a class="text-gray-500 hover:text-gray-400 text-sm" href="#">Events</a>
+							</li>
+							<li>
+								<a class="text-gray-500 hover:text-gray-400 text-sm" href="#">Blog</a>
+							</li>
+						</ul>
+					</div>
+					<!-- ==003 == -->
+					<div x-data="{accrodion3:false}"@click.away="accrodion3=false" class="p-4 py-3 md:p-0 md:border-0 border border-b-0">
+						<div @click="accrodion3= !accrodion3" class=" cursor-pointer flex justify-between items-center">
+							<h4 class="text-green-500 md:pb-4 text-xs font-semibold flex">LEGAL</h4>
+							<div>
+								<span x-show="!accrodion3">
+									<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+										<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+									  </svg>
+								</span>
+								<span x-show="accrodion3">
+									<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+										<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+									  </svg>
+								</span>
+							</div>
+						</div>
+						<ul x-show.transition="accrodion3" class="md:p-0 p-3 space-y-1">
+							<li>
+								<a class="text-gray-500 hover:text-gray-400 text-sm" href="#">Privacy</a>
+							</li>
+							<li>
+								<a class="text-gray-500 hover:text-gray-400 text-sm" href="#">Security</a>
+							</li>
+							<li>
+								<a class="text-gray-500 hover:text-gray-400 text-sm" href="#">Terms of Service</a>
+							</li>
+							<li>
+								<a class="text-gray-500 hover:text-gray-400 text-sm" href="#">Policies</a>
+							</li>
+						</ul>
+					</div>
+					<!-- ==004 == -->
+					<div x-data="{accrodion4:false}"@click.away="accrodion4=false" class="p-4 py-3 md:p-0 md:border-0 border">
+						<div @click="accrodion4= !accrodion4" class=" cursor-pointer flex justify-between items-center">
+							<h4 class="text-blue-500 md:pb-4 text-xs font-semibold flex">HANDY LINKS</h4>
+							<div>
+								<span x-show="!accrodion4">
+									<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+										<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+									  </svg>
+								</span>
+								<span x-show="accrodion4">
+									<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+										<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+									  </svg>
+								</span>
+							</div>
+						</div>
+						<ul x-show.transition="accrodion4" class="md:p-0 p-3 space-y-1">
+							<li>
+								<a class="text-gray-500 hover:text-gray-400 text-sm" href="#">Download desktop app</a>
+							</li>
+							<li>
+								<a class="text-gray-500 hover:text-gray-400 text-sm" href="#">Download mobile app</a>
+							</li>
+							<li>
+								<a class="text-gray-500 hover:text-gray-400 text-sm" href="#">Brand Guidelines</a>
+							</li>
+							<li>
+								<a class="text-gray-500 hover:text-gray-400 text-sm" href="#">Slack at Work</a>
+							</li>
+							<li>
+								<a class="text-gray-500 hover:text-gray-400 text-sm" href="#">Status</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div class=" md:block hidden">
+				<div class="grid md:grid-cols-4 gap-4 xl:px-40 sm:px-8 px-4 py-10">
+					<!-- ==001 == -->
+					<div>
+						<h4 class="text-red-500 pb-4 text-xs font-semibold">USING SLACK</h4>
+						<ul class=" space-y-1">
+							<li>
+								<a class="text-gray-500 hover:text-gray-400 text-sm" href="#">Product</a>
+							</li>
+							<li>
+								<a class="text-gray-500 hover:text-gray-400 text-sm" href="#">Enterprise</a>
+							</li>
+							<li>
+								<a class="text-gray-500 hover:text-gray-400 text-sm" href="#">Pricing</a>
+							</li>
+							<li>
+								<a class="text-gray-500 hover:text-gray-400 text-sm" href="#">Support</a>
+							</li>
+							<li>
+								<a class="text-gray-500 hover:text-gray-400 text-sm" href="#">Slack Guides</a>
+							</li>
+							<li>
+								<a class="text-gray-500 hover:text-gray-400 text-sm" href="#">App Directory</a>
+							</li>
+							<li>
+								<a class="text-gray-500 hover:text-gray-400 text-sm" href="#">API</a>
+							</li>
+						</ul>
+					</div>
+					<!-- ==002 == -->
+					<div>
+						<h4 class="text-pink-500 pb-4 text-xs font-semibold flex">SLACK
+							<span>
+								<svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+									<path fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd" />
+								  </svg>
+							</span>
+						</h4>
+						<ul class=" space-y-1">
+							<li>
+								<a class="text-gray-500 hover:text-gray-400 text-sm" href="#">Jobs</a>
+							</li>
+							<li>
+								<a class="text-gray-500 hover:text-gray-400 text-sm" href="#">Customers</a>
+							</li>
+							<li>
+								<a class="text-gray-500 hover:text-gray-400 text-sm" href="#">Developers</a>
+							</li>
+							<li>
+								<a class="text-gray-500 hover:text-gray-400 text-sm" href="#">Events</a>
+							</li>
+							<li>
+								<a class="text-gray-500 hover:text-gray-400 text-sm" href="#">Blog</a>
+							</li>
+						</ul>
+					</div>
+					<!-- ==003 == -->
+					<div>
+						<h4 class="text-green-500 pb-4 text-xs font-semibold flex">LEGAL</h4>
+						<ul class=" space-y-1">
+							<li>
+								<a class="text-gray-500 hover:text-gray-400 text-sm" href="#">Privacy</a>
+							</li>
+							<li>
+								<a class="text-gray-500 hover:text-gray-400 text-sm" href="#">Security</a>
+							</li>
+							<li>
+								<a class="text-gray-500 hover:text-gray-400 text-sm" href="#">Terms of Service</a>
+							</li>
+							<li>
+								<a class="text-gray-500 hover:text-gray-400 text-sm" href="#">Policies</a>
+							</li>
+						</ul>
+					</div>
+					<!-- ==004 == -->
+					<div>
+						<h4 class="text-blue-500 pb-4 text-xs font-semibold flex">HANDY LINKS</h4>
+						<ul class=" space-y-1">
+							<li>
+								<a class="text-gray-500 hover:text-gray-400 text-sm" href="#">Download desktop app</a>
+							</li>
+							<li>
+								<a class="text-gray-500 hover:text-gray-400 text-sm" href="#">Download mobile app</a>
+							</li>
+							<li>
+								<a class="text-gray-500 hover:text-gray-400 text-sm" href="#">Brand Guidelines</a>
+							</li>
+							<li>
+								<a class="text-gray-500 hover:text-gray-400 text-sm" href="#">Slack at Work</a>
+							</li>
+							<li>
+								<a class="text-gray-500 hover:text-gray-400 text-sm" href="#">Status</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div class="bg-gray-100 flex justify-between xl:px-40 sm:px-8 px-4 py-4">
+				<a class="text-gray-500" href="index.html">
+					<svg xmlns="http://www.w3.org/2000/svg"fill="currentColor" class="bi bi-slack h-8 w-8" viewBox="0 0 16 16">
+						<path d="M3.362 10.11c0 .926-.756 1.681-1.681 1.681S0 11.036 0 10.111C0 9.186.756 8.43 1.68 8.43h1.682v1.68zm.846 0c0-.924.756-1.68 1.681-1.68s1.681.756 1.681 1.68v4.21c0 .924-.756 1.68-1.68 1.68a1.685 1.685 0 0 1-1.682-1.68v-4.21zM5.89 3.362c-.926 0-1.682-.756-1.682-1.681S4.964 0 5.89 0s1.68.756 1.68 1.68v1.682H5.89zm0 .846c.924 0 1.68.756 1.68 1.681S6.814 7.57 5.89 7.57H1.68C.757 7.57 0 6.814 0 5.89c0-.926.756-1.682 1.68-1.682h4.21zm6.749 1.682c0-.926.755-1.682 1.68-1.682.925 0 1.681.756 1.681 1.681s-.756 1.681-1.68 1.681h-1.681V5.89zm-.848 0c0 .924-.755 1.68-1.68 1.68A1.685 1.685 0 0 1 8.43 5.89V1.68C8.43.757 9.186 0 10.11 0c.926 0 1.681.756 1.681 1.68v4.21zm-1.681 6.748c.926 0 1.682.756 1.682 1.681S11.036 16 10.11 16s-1.681-.756-1.681-1.68v-1.682h1.68zm0-.847c-.924 0-1.68-.755-1.68-1.68 0-.925.756-1.681 1.68-1.681h4.21c.924 0 1.68.756 1.68 1.68 0 .926-.756 1.681-1.68 1.681h-4.21z"/>
+					  </svg>
+				</a>
+				<div class=" flex space-x-4">
+					<a href="#" class=" text-gray-500 hover:text-gray-400">Contact Us</a>
+					<a href="#" class=" text-gray-500 hover:text-blue-400">
+						<svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-twitter h-5 w-5" viewBox="0 0 16 16">
+							<path d="M5.026 15c6.038 0 9.341-5.003 9.341-9.334 0-.14 0-.282-.006-.422A6.685 6.685 0 0 0 16 3.542a6.658 6.658 0 0 1-1.889.518 3.301 3.301 0 0 0 1.447-1.817 6.533 6.533 0 0 1-2.087.793A3.286 3.286 0 0 0 7.875 6.03a9.325 9.325 0 0 1-6.767-3.429 3.289 3.289 0 0 0 1.018 4.382A3.323 3.323 0 0 1 .64 6.575v.045a3.288 3.288 0 0 0 2.632 3.218 3.203 3.203 0 0 1-.865.115 3.23 3.23 0 0 1-.614-.057 3.283 3.283 0 0 0 3.067 2.277A6.588 6.588 0 0 1 .78 13.58a6.32 6.32 0 0 1-.78-.045A9.344 9.344 0 0 0 5.026 15z"/>
+						  </svg>
+					</a>
+					<a href="#" class=" text-gray-500 hover:text-red-500">
+						<svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-youtube h-5 w-5" viewBox="0 0 16 16">
+							<path d="M8.051 1.999h.089c.822.003 4.987.033 6.11.335a2.01 2.01 0 0 1 1.415 1.42c.101.38.172.883.22 1.402l.01.104.022.26.008.104c.065.914.073 1.77.074 1.957v.075c-.001.194-.01 1.108-.082 2.06l-.008.105-.009.104c-.05.572-.124 1.14-.235 1.558a2.007 2.007 0 0 1-1.415 1.42c-1.16.312-5.569.334-6.18.335h-.142c-.309 0-1.587-.006-2.927-.052l-.17-.006-.087-.004-.171-.007-.171-.007c-1.11-.049-2.167-.128-2.654-.26a2.007 2.007 0 0 1-1.415-1.419c-.111-.417-.185-.986-.235-1.558L.09 9.82l-.008-.104A31.4 31.4 0 0 1 0 7.68v-.123c.002-.215.01-.958.064-1.778l.007-.103.003-.052.008-.104.022-.26.01-.104c.048-.519.119-1.023.22-1.402a2.007 2.007 0 0 1 1.415-1.42c.487-.13 1.544-.21 2.654-.26l.17-.007.172-.006.086-.003.171-.007A99.788 99.788 0 0 1 7.858 2h.193zM6.4 5.209v4.818l4.157-2.408L6.4 5.209z"/>
+						</svg>
+					</a>
+				</div>
+			</div>
+		</footer>
+		<!--  Alpine Js -->
+		<script src="js/alpine.min.js" defer></script>
+		<!--  jQuery and Bootstrap Bundle (includes Popper) -->
+	</body>
+	
+</html>
+
+
+
+
+
+
+

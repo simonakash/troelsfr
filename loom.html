@@ -1,0 +1,1148 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		
+		<!-- Company Name -->
+		<title>Loom | Slack App Directory</title>
+		
+		<!-- Company Icon -->
+		<link rel="icon" href="images/logo.png">
+		
+		<!-- Google Font  -->
+		<!-- Tailwind-Css -->
+		<link rel="stylesheet" href="css/tailwind.min.css">
+		
+	</head>
+	<body>
+		<header class="fixed right-0 top-0 left-0 z-50">
+			<div x-data="{humberger: false}">
+				<!-- == Mobile nav == -->
+				<nav class="relative z-50" x-show.transition="humberger"
+					@click.away="humberger = false"
+				>
+					<div class="fixed relative top-0 left-0 w-screen h-screen">
+						<div class="bg-blue-800 h-3/4 bg-opacity-95 flex items-center px-10">
+							<button @click.prevent="humberger = false">
+								<span  class="transform transition duration-700 absolute hover:rotate-180 right-8 text-white top-4">
+									<svg  xmlns="http://www.w3.org/2000/svg" class="h-9 w-9" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+										<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+									</svg>
+								</span>
+							</button>
+							<!-- == Ul menu == -->
+							<ul class="space-y-8">
+								<li>
+									<a class=" p-2 text-white text-3xl" href="#">Browse</a>
+								</li>
+								<li>
+									<a class=" p-2 text-white text-3xl" href="#">Manage </a>
+								</li>
+								<li>
+									<a class=" p-2 text-white text-3xl" href="#">Build  </a>
+								</li>
+							</ul>
+						</div>
+						<div class="bg-indigo-800 h-1/4 bg-opacity-95 flex items-center px-10">
+							<a class=" flex items-center space-x-2" href="#">
+								<span class=" p-2 rounded-md text-black bg-white">
+									<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+										<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+									</svg>
+								</span>
+								<span class=" text-white text-xl font-medium">Sign in to another workspace</span>
+							</a>
+						</div>
+					</div>
+				</nav>
+				<!-- == manin nac == -->
+				<nav class="flex justify-between items-center text-center text-white lg:px-2 xl:px-8 sm:px-6 px-2 py-2 bg-white relative">
+					<!-- ==Logo == -->
+					<a class="text-yellow-500 sm:text-4xl text-3xl font-bold" href="index.html">
+						<img class="w-full h-14" src="images/slack_app_directory_logo.svg" alt="">
+					</a>
+					<!-- ==Search bar == -->
+					<div class="relative lg:block hidden">
+						<input class="xl:w-96 lg:w-72 shadow-md focus:ring focus:border-gray-400 font-medium outline-none border pl-10 p-2 rounded-md placeholder-gray-500" type="text" placeholder="Search App Directory">
+						<span class=" absolute top-3 left-3">
+							<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+								</svg>
+						</span>
+					</div>
+					<div class=" flex justify-center items-center space-x-3">
+						<!-- == menu and search button == -->
+						<div x-data="{search:false}">
+							<div class=" flex md:hidden space-x-3">
+								<button @click="search=true" class="text-gray-400 hover:text-gray-500 focus:outline-none">
+									<svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+										<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+									</svg>
+								</button>
+							</div>
+							<!-- == Search Bar == -->
+							<div x-show.transition="search" class=" fixed left-0 top-0 w-full flex justify-between items-center md:px-8 sm:px-6 px-2 bg-white py-2 space-x-4">
+								<button class="text-gray-400 hover:text-gray-500 focus:outline-none">
+									<svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+										<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+									</svg>
+								</button>
+								<input class="w-full p-4 text-gray-900 py-3 placeholder-gray-500 rounded-md  shadow-md focus:ring focus:border-gray-400 outline-none duration-300 font-semibold text-lg" type="text"placeholder="Search App Directory">
+								<button @click="search=false" class="text-gray-400 hover:text-gray-500 focus:outline-none">
+									<svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+										<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" />
+									</svg>
+								</button>
+							</div>
+						</div>
+						<!-- == main menu li == -->
+						<div class="flex space-x-6 md:block hidden" x-data=" {active :'active1'}">
+							<ul class="space-x-4 flex items-center">
+								<li>
+									<a class="text-gray-600 p-2 hover:bg-gray-200 rounded font-semibold duration-300" href="#">Browse</a>
+								</li>
+								<li>
+									<a class="text-gray-400 hover:text-gray-600 p-2 hover:bg-gray-200 rounded font-semibold duration-300" href="#">Manage </a>
+								</li>
+								<li>
+									<a class="text-gray-400 hover:text-gray-600 p-2 hover:bg-gray-200 rounded font-semibold duration-300" href="#">Build  </a>
+								</li>
+								<li>
+									<a class="text-gray-400 hover:text-gray-600 p-2 hover:bg-gray-200 rounded font-semibold duration-300 whitespace-nowrap" href="#">Sign in </a>
+								</li>
+								<li>
+									<a class="text-gray-500 border border-gray-400 hover:text-gray-700 p-2 hover:shadow-md rounded-md font-semibold duration-300 whitespace-nowrap" href="#">Create Workspace</a>
+								</li>
+							</ul>
+						</div>
+						<button class="border-2 text-gray-400 rounded hover:text-gray-500 px-2 focus:outline-none py-1 font-semibold md:hidden block" @click.prevent="humberger=true">menu</button>
+					</div>
+				</nav>
+			</div>
+		</header>
+		<main>
+			<!-- == Section 001 == -->
+			<section class="pt-16 xl:px-48 sm:px-8 px-4 ">
+				<div class=" pt-12">
+					<a href="#" class="flex items-center space-x-1 hover:underline text-blue-700 "> 
+						<span>
+							<svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+							  </svg>
+						</span>
+						<span class="font-medium">Browse Apps</span>
+					</a>
+				</div>
+				<div class=" lg:grid lg:grid-cols-12 gap-10 pt-6">
+					<!-- == grid 001 == -->
+					<div class=" lg:col-span-3">
+						<!-- ==  == -->
+						<div class="pb-4">
+							<div>
+								<div>
+									<img class=" mx-auto rounded-2xl lg:w-full w-52" src="images/1523833081063_159cf989d1cbf0ecc5c9_512.png" alt="">
+								</div>
+								<!-- == button == -->
+								<div class=" text-center my-4">
+									<h1 class=" lg:hidden block font-bold tracking-tight text-left text-3xl py-5">Loom</h1>
+									<!-- == button == -->
+									<a class="w-full bg-green-700 hover:shadow-md hover:bg-green-600 duration-200 block p-2 rounded-md text-white font-bold text-lg tracking-tight" href="#">Sign In to install</a>
+									<!-- == button == -->
+									<a class="w-full bg-white mt-4 block p-2 rounded-md text-black font-bold text-lg border border-gray-400 hover:shadow-lg hover:bg-gray-100 duration-200" href="#">Learn More</a>
+								</div>
+							</div>
+						</div>
+						<!-- ==  == -->
+						<div class="lg:block hidden border-t pt-4">
+							<!-- ==  == -->
+							<div>
+								<h4 class=" text-md font-medium">Supported Languages </h4>
+								<p class=" text-gray-800">English </p>
+								<h4 class="mt-4 text-md font-medium">Pricing</h4>
+								<p class=" text-gray-800">Free and paid plans available</p>
+							</div>
+							<!-- ==  == -->
+							<div class="mt-4">
+								<h4 class=" text-md font-medium">Learn more & Support</h4>
+								<ul>
+									<li>
+										<a class="block flex items-center pt-1 space-x-1 hover:underline text-blue-500" href="#">
+											<span >
+												<svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-life-preserver h-4 w-4" viewBox="0 0 16 16">
+													<path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm6.43-5.228a7.025 7.025 0 0 1-3.658 3.658l-1.115-2.788a4.015 4.015 0 0 0 1.985-1.985l2.788 1.115zM5.228 14.43a7.025 7.025 0 0 1-3.658-3.658l2.788-1.115a4.015 4.015 0 0 0 1.985 1.985L5.228 14.43zm9.202-9.202-2.788 1.115a4.015 4.015 0 0 0-1.985-1.985l1.115-2.788a7.025 7.025 0 0 1 3.658 3.658zm-8.087-.87a4.015 4.015 0 0 0-1.985 1.985L1.57 5.228A7.025 7.025 0 0 1 5.228 1.57l1.115 2.788zM8 11a3 3 0 1 1 0-6 3 3 0 0 1 0 6z"/>
+												  </svg>
+											</span>
+											<span>Get app support</span>
+										</a>
+									</li>
+									<li>
+										<a class="block flex items-center pt-1 space-x-1 hover:underline text-blue-500" href="#">
+											<span>
+												<svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+													<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+												  </svg>
+											</span>
+											<span>Visit developer website</span>
+										</a>
+									</li>
+									<li>
+										<a class="block flex items-center pt-1 space-x-1 hover:underline text-blue-500" href="#">
+											<span>
+												<svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-envelope h-4 w-4"  viewBox="0 0 16 16">
+													<path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1H2zm13 2.383-4.758 2.855L15 11.114v-5.73zm-.034 6.878L9.271 8.82 8 9.583 6.728 8.82l-5.694 3.44A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.739zM1 11.114l4.758-2.876L1 5.383v5.73z"/>
+												  </svg>
+											</span>
+											<span> support@loom.com</span>
+										</a>
+									</li>
+									<li>
+										<a class="block flex items-center pt-1 space-x-1 hover:underline text-blue-500" href="#">
+											<span>
+												<svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+													<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+												  </svg>
+											</span>
+											<span>Privacy policy</span>
+										</a>
+									</li>
+								</ul>
+							</div>
+							<!-- ==  == -->
+							<div class="my-4">
+								<h4 class=" text-md font-medium pb-2">Categories</h4>
+								<div class=" flex items-center space-x-2">
+									<!-- ==  == -->
+									<a class="bg-white inline-block rounded text-sm border hover:shadow-lg hover:bg-gray-100 px-3 py-1 duration-200 border-gray-400 shadow-inner font-semibold hover:underline text-gray-600" href="#">Communication</a>
+									<!-- ==  == -->
+									<a class="bg-white inline-block rounded text-sm border hover:shadow-lg hover:bg-gray-100 px-3 py-1 duration-200 border-gray-400 shadow-inner font-semibold hover:underline text-gray-600" href="#">Featured</a>
+								</div>
+									<!-- ==  == -->
+								<div >
+									<a class="bg-white mt-2 inline-block rounded text-sm border hover:shadow-lg hover:bg-gray-100 px-3 py-1 duration-200 border-gray-400 shadow-inner font-semibold hover:underline text-gray-600" href="#">Productivity</a>
+									<a class="bg-white mt-2 inline-block rounded text-sm border hover:shadow-lg hover:bg-gray-100 px-3 py-1 duration-200 border-gray-400 shadow-inner font-semibold hover:underline text-gray-600" href="#">Voice & Video</a>
+									<a class="bg-white mt-2 mb-4 inline-block rounded text-sm border hover:shadow-lg hover:bg-gray-100 px-3 py-1 duration-200 border-gray-400 shadow-inner font-semibold hover:underline text-gray-600" href="#">Working from home</a>
+								</div>
+							</div>
+							<!-- ==  == -->
+							<div class=" border-t py-4 text-sm">
+								<p class="pb-4 text-gray-500">Slack conducts a brief review of apps in our App Directory and does not endorse or certify these apps. If you encounter inappropriate content or behavior please report it.</p>
+								<a class="block flex items-center pt-1 space-x-1 hover:underline text-red-600" href="#">
+									<span >
+										<svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+											<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 21v-4m0 0V5a2 2 0 012-2h6.5l1 1H21l-3 6 3 6h-8.5l-1-1H5a2 2 0 00-2 2zm9-13.5V9" />
+										</svg>
+									</span>
+									<span>Report this app</span>
+								</a>
+							</div>
+						</div>
+					</div>
+					<!-- == grid 001 == -->
+					<div class=" lg:col-span-9">
+						<!-- == == -->
+						<div class=" mb-8 ">
+							<!-- == == -->
+							<div class=" lg:block hidden">
+								<h4 class="font-bold tracking-tight text-3xl pb-4 ">Loom</h4>
+							</div>
+							<!-- == == -->
+							<div x-data="{tab: 'tab1'}">
+								<!-- == ul li a  button== -->
+								<div class=" flex items-center border-b space-x-4">
+									<!-- ==  button== -->
+									<button @click.prevent="tab='tab1'" :class="{'border-b-2 border-green-700 text-gray-800' : tab==='tab1'}" class=" text-gray-600 font-semibold p-2 hover:text-gray-800 focus:outline-none transition duration-300 text-sm">Description</button>
+									<!-- == button== -->
+									<button @click.prevent="tab='tab2'" :class="{'border-b-2 border-green-700 text-gray-800' : tab==='tab2'}" class=" text-gray-600 font-semibold p-2 hover:text-gray-800 focus:outline-none transition duration-300 text-sm">Permissions</button>
+									<!-- == button== -->
+									<button @click.prevent="tab='tab3'" :class="{'border-b-2 border-green-700 text-gray-800' : tab==='tab3'}" class=" text-gray-600 font-semibold p-2 hover:text-gray-800 focus:outline-none transition duration-300 text-sm">Security & Compliance</button>
+								</div>
+								<!-- == ul li a content== -->
+								<div>
+									<div x-show="tab==='tab1'" class="py-6">
+										<div>
+											<iframe  class="p-app_directory_detail_carousel__video_iframe  rounded-lg shadow border w-full"style="height: 397.5px;" src="https://www.youtube.com/embed/O1HoajaVEhM?autoplay=0" frameborder="0" allowfullscreen="" title="O1HoajaVEhM" __idm_id__="1006494721"></iframe>
+										</div>
+										<div class="pt-6">
+											<h4 class=" text-md font-medium">Go beyond plain text</h4>
+											<p class="text-gray-700 my-2 pb-2">In our day-to-day personal lives we're constantly communicating with video but at work we’re still stuck typing words. Loom brings the richness of video communication to Slack.</p>
+											<h4 class=" text-md font-medium">Video recording, simplified</h4>
+											<p class="text-gray-700 my-2 pb-2">Bring your work to life. Capture your screen, record your front-facing camera, and narrate it all at once, then instantly share with a simple link to help your team learn about and better understand the great work you have done.</p>
+											<h4 class=" text-md font-medium">With a human touch</h4>
+											<p class="text-gray-700 my-2 pb-2">Make your work communication more personal with the nuances of tone and facial expression right in the Slack experience. The Loom App for Slack enables inline video plays so your coworkers can hear your voice and see your face without leaving the Slack experience. Feel free to show a little more of yourself.</p>
+										</div>
+									</div>
+									<div x-show="tab==='tab2'" class="lg:px-8 px-0 p-8">
+										<h1 class=" font-semibold mt-8 text-xl">Permissions</h1>
+										<div >
+											<h3 class=" font-medium mt-2 mb-6">Loom will be able to view:</h3>
+											<!-- ==001 == -->
+											<div>
+												<!-- ==001 == -->
+												<div x-data="{accrodion1:false}" @click.away="accrodion1=false">
+													<div class="flex items-start space-x-4 text-gray-600">
+														<div >
+															<svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-person w-6 h-6" viewBox="0 0 16 16">
+																<path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z"/>
+															</svg>
+														</div>
+														<div @click="accrodion1= !accrodion1" class=" w-full border-b pl-0 pt-1 p-3 cursor-pointer">
+															<div class=" flex justify-between items-center w-full">
+																<h4 :class="{'text-gray-900 font-medium' : accrodion1=== true}">Content and info about you</h4>
+																<div>
+																	<span x-show="!accrodion1">
+																		<svg xmlns="http://www.w3.org/2000/svg"  fill="currentColor" class="bi bi-caret-right-fill h-3 w-3" viewBox="0 0 16 16">
+																			<path d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z"/>
+																		</svg>
+																	</span>
+																	<span x-show="accrodion1">
+																		<svg xmlns="http://www.w3.org/2000/svg"  fill="currentColor" class="bi bi-caret-down-fill h-3 w-3" viewBox="0 0 16 16">
+																			<path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"/>
+																		</svg>
+																	</span>
+																</div>
+															</div>
+															<ul x-show="accrodion1" class="space-y-1 pt-3">
+																<li>View information about your identity</li>
+																<li>View your Slack avatar</li>
+																<li>View your email address</li>
+																<li>View your Slack workspace name</li>
+															</ul>
+														</div>
+													</div>
+												</div>
+												<!-- ==002 == -->
+												<div x-data="{accrodion2:false}" @click.away="accrodion2=false">
+													<div class="flex items-start space-x-4 text-gray-600 mt-2">
+														<div >
+															<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+																<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+															</svg>
+														</div>
+														<div @click="accrodion2= !accrodion2" class=" w-full border-b pl-0 pt-1 p-3 cursor-pointer">
+															<div class=" flex justify-between items-center w-full">
+																<h4 :class="{'text-gray-900 font-medium' : accrodion2=== true}">Content and info about channels & conversations</h4>
+																<div>
+																	<span x-show="!accrodion2">
+																		<svg xmlns="http://www.w3.org/2000/svg"  fill="currentColor" class="bi bi-caret-right-fill h-3 w-3" viewBox="0 0 16 16">
+																			<path d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z"/>
+																		</svg>
+																	</span>
+																	<span x-show="accrodion2">
+																		<svg xmlns="http://www.w3.org/2000/svg"  fill="currentColor" class="bi bi-caret-down-fill h-3 w-3" viewBox="0 0 16 16">
+																			<path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"/>
+																		</svg>
+																	</span>
+																</div>
+															</div>
+															<ul x-show="accrodion2" class="space-y-1 pt-3">
+																<li>View basic information about public channels in your workspace</li>
+																<li>View basic information about your private channels</li>
+																<li>View basic information about your direct messages</li>
+																<li>View basic information about your group direct messages</li>
+															</ul>
+														</div>
+													</div>
+												</div>
+												<!-- ==003 == -->
+												<div x-data="{accrodion3:false}" @click.away="accrodion3=false">
+													<div class="flex items-start space-x-4 text-gray-600 mt-2">
+														<div >
+															<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+																<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" />
+															</svg>
+														</div>
+														<div @click="accrodion3= !accrodion3" class=" w-full border-b pl-0 pt-1 p-3 cursor-pointer">
+															<div class=" flex justify-between items-center w-full">
+																<h4 :class="{'text-gray-900 font-medium' : accrodion3=== true}">Content and info about your workspace</h4>
+																<div>
+																	<span x-show="!accrodion3">
+																		<svg xmlns="http://www.w3.org/2000/svg"  fill="currentColor" class="bi bi-caret-right-fill h-3 w-3" viewBox="0 0 16 16">
+																			<path d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z"/>
+																		</svg>
+																	</span>
+																	<span x-show="accrodion3">
+																		<svg xmlns="http://www.w3.org/2000/svg"  fill="currentColor" class="bi bi-caret-down-fill h-3 w-3" viewBox="0 0 16 16">
+																			<path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"/>
+																		</svg>
+																	</span>
+																</div>
+															</div>
+															<ul x-show="accrodion3" class="space-y-1 pt-3">
+																<li>View the name, email domain, and icon for workspaces you‘re connected to</li>
+																<li>View people in your workspace</li>
+																<li>View email addresses of people in your workspace</li>
+																<li>View basic information about your group direct messages</li>
+															</ul>
+														</div>
+													</div>
+												</div>
+											</div>
+											<!-- ==002 == -->
+											<div>
+												<h3 class=" font-medium mt-2 mb-6">Loom will be able to do:</h3>
+												<!-- ==001 == -->
+												<div x-data="{accrodion4:false}" @click.away="accrodion4=false">
+													<div class="flex items-start space-x-4 text-gray-600">
+														<div >
+															<svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-person w-6 h-6" viewBox="0 0 16 16">
+																<path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z"/>
+															</svg>
+														</div>
+														<div @click="accrodion4= !accrodion4" class=" w-full border-b pl-0 pt-1 p-3 cursor-pointer">
+															<div class=" flex justify-between items-center w-full">
+																<h4 :class="{'text-gray-900 font-medium' : accrodion4=== true}">Perform actions as you</h4>
+																<div>
+																	<span x-show="!accrodion4">
+																		<svg xmlns="http://www.w3.org/2000/svg"  fill="currentColor" class="bi bi-caret-right-fill h-3 w-3" viewBox="0 0 16 16">
+																			<path d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z"/>
+																		</svg>
+																	</span>
+																	<span x-show="accrodion4">
+																		<svg xmlns="http://www.w3.org/2000/svg"  fill="currentColor" class="bi bi-caret-down-fill h-3 w-3" viewBox="0 0 16 16">
+																			<path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"/>
+																		</svg>
+																	</span>
+																</div>
+															</div>
+															<ul x-show="accrodion4" class="space-y-1 pt-3">
+																<li>Send messages on your behalf</li>
+																<li>Start direct messages with people on your behalf</li>
+															</ul>
+														</div>
+													</div>
+												</div>
+												<!-- ==002 == -->
+												<div x-data="{accrodion2:false}" @click.away="accrodion2=false">
+													<div class="flex items-start space-x-4 text-gray-600 mt-2">
+														<div >
+															<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+																<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+															</svg>
+														</div>
+														<div @click="accrodion2= !accrodion2" class=" w-full border-b pl-0 pt-1 p-3 cursor-pointer">
+															<div class=" flex justify-between items-center w-full">
+																<h4 :class="{'text-gray-900 font-medium' : accrodion2=== true}">Perform actions in channels & conversations</h4>
+																<div>
+																	<span x-show="!accrodion2">
+																		<svg xmlns="http://www.w3.org/2000/svg"  fill="currentColor" class="bi bi-caret-right-fill h-3 w-3" viewBox="0 0 16 16">
+																			<path d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z"/>
+																		</svg>
+																	</span>
+																	<span x-show="accrodion2">
+																		<svg xmlns="http://www.w3.org/2000/svg"  fill="currentColor" class="bi bi-caret-down-fill h-3 w-3" viewBox="0 0 16 16">
+																			<path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"/>
+																		</svg>
+																	</span>
+																</div>
+															</div>
+															<ul x-show="accrodion2" class="space-y-1 pt-3">
+																<li>View the name, email domain, and icon for workspaces you‘re connected to</li>
+																<li>View people in your workspace</li>
+																<li>View email addresses of people in your workspace</li>
+															</ul>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+										<!-- ==003 == -->
+										<div class=" lg:hidden block">
+											<h1 class="tracking-tight font-semibold mb-4 mt-10 text-2xl">Additional Information</h1>
+											<!-- ==001 == -->
+											<div x-data="{accrodion1:false}" @click.away="accrodion1=false">
+												<div @click="accrodion1= !accrodion1" class="text-gray-600 w-full border-b px-0 p-3 cursor-pointer">
+													<div class=" flex justify-between items-center w-full">
+														<h4 :class="{'text-gray-900 font-medium' : accrodion1=== true}">Supported Languages</h4>
+														<div>
+															<span x-show="!accrodion1">
+																<svg xmlns="http://www.w3.org/2000/svg"  fill="currentColor" class="bi bi-caret-right-fill h-3 w-3" viewBox="0 0 16 16">
+																	<path d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z"/>
+																</svg>
+															</span>
+															<span x-show="accrodion1">
+																<svg xmlns="http://www.w3.org/2000/svg"  fill="currentColor" class="bi bi-caret-down-fill h-3 w-3" viewBox="0 0 16 16">
+																	<path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"/>
+																</svg>
+															</span>
+														</div>
+													</div>
+													<ul x-show="accrodion1" class="space-y-1 pt-3">
+														<li>English</li>
+													</ul>
+												</div>
+											</div>
+											<!-- ==002 == -->
+											<div x-data="{accrodion1:false}" @click.away="accrodion1=false">
+												<div @click="accrodion1= !accrodion1" class="text-gray-600 w-full border-b px-0 p-3 cursor-pointer">
+													<div class=" flex justify-between items-center w-full">
+														<h4 :class="{'text-gray-900 font-medium' : accrodion1=== true}">Pricing</h4>
+														<div>
+															<span x-show="!accrodion1">
+																<svg xmlns="http://www.w3.org/2000/svg"  fill="currentColor" class="bi bi-caret-right-fill h-3 w-3" viewBox="0 0 16 16">
+																	<path d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z"/>
+																</svg>
+															</span>
+															<span x-show="accrodion1">
+																<svg xmlns="http://www.w3.org/2000/svg"  fill="currentColor" class="bi bi-caret-down-fill h-3 w-3" viewBox="0 0 16 16">
+																	<path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"/>
+																</svg>
+															</span>
+														</div>
+													</div>
+													<ul x-show="accrodion1" class="space-y-1 pt-3">
+														<li>Free and paid plans available</li>
+													</ul>
+												</div>
+											</div>
+											<!-- ==003 == -->
+											<div x-data="{accrodion1:false}" @click.away="accrodion1=false">
+												<div @click="accrodion1= !accrodion1" class="text-gray-600 w-full border-b px-0 p-3 cursor-pointer">
+													<div class=" flex justify-between items-center w-full">
+														<h4 :class="{'text-gray-900 font-medium' : accrodion1=== true}">Learn more & Support</h4>
+														<div>
+															<span x-show="!accrodion1">
+																<svg xmlns="http://www.w3.org/2000/svg"  fill="currentColor" class="bi bi-caret-right-fill h-3 w-3" viewBox="0 0 16 16">
+																	<path d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z"/>
+																</svg>
+															</span>
+															<span x-show="accrodion1">
+																<svg xmlns="http://www.w3.org/2000/svg"  fill="currentColor" class="bi bi-caret-down-fill h-3 w-3" viewBox="0 0 16 16">
+																	<path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"/>
+																</svg>
+															</span>
+														</div>
+													</div>
+													<ul x-show="accrodion1" class="space-y-1 pt-3">
+														<li>
+															<a class="block flex items-center pt-1 space-x-1 hover:underline text-blue-500" href="#">
+																<span >
+																	<svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-life-preserver h-4 w-4" viewBox="0 0 16 16">
+																		<path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm6.43-5.228a7.025 7.025 0 0 1-3.658 3.658l-1.115-2.788a4.015 4.015 0 0 0 1.985-1.985l2.788 1.115zM5.228 14.43a7.025 7.025 0 0 1-3.658-3.658l2.788-1.115a4.015 4.015 0 0 0 1.985 1.985L5.228 14.43zm9.202-9.202-2.788 1.115a4.015 4.015 0 0 0-1.985-1.985l1.115-2.788a7.025 7.025 0 0 1 3.658 3.658zm-8.087-.87a4.015 4.015 0 0 0-1.985 1.985L1.57 5.228A7.025 7.025 0 0 1 5.228 1.57l1.115 2.788zM8 11a3 3 0 1 1 0-6 3 3 0 0 1 0 6z"/>
+																	</svg>
+																</span>
+																<span>Get app support</span>
+															</a>
+														</li>
+														<li>
+															<a class="block flex items-center pt-1 space-x-1 hover:underline text-blue-500" href="#">
+																<span>
+																	<svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+																		<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+																	</svg>
+																</span>
+																<span>Visit developer website</span>
+															</a>
+														</li>
+														<li>
+															<a class="block flex items-center pt-1 space-x-1 hover:underline text-blue-500" href="#">
+																<span>
+																	<svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-envelope h-4 w-4"  viewBox="0 0 16 16">
+																		<path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1H2zm13 2.383-4.758 2.855L15 11.114v-5.73zm-.034 6.878L9.271 8.82 8 9.583 6.728 8.82l-5.694 3.44A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.739zM1 11.114l4.758-2.876L1 5.383v5.73z"/>
+																	</svg>
+																</span>
+																<span> support@loom.com</span>
+															</a>
+														</li>
+														<li>
+															<a class="block flex items-center pt-1 space-x-1 hover:underline text-blue-500" href="#">
+																<span>
+																	<svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+																		<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+																	</svg>
+																</span>
+																<span>Privacy policy</span>
+															</a>
+														</li>
+													</ul>
+												</div>
+											</div>
+											<!-- ==004 == -->
+											<div x-data="{accrodion1:false}" @click.away="accrodion1=false">
+												<div @click="accrodion1= !accrodion1" class="text-gray-600 w-full border-b px-0 p-3 cursor-pointer">
+													<div class=" flex justify-between items-center w-full">
+														<h4 :class="{'text-gray-900 font-medium' : accrodion1=== true}">Categories</h4>
+														<div>
+															<span x-show="!accrodion1">
+																<svg xmlns="http://www.w3.org/2000/svg"  fill="currentColor" class="bi bi-caret-right-fill h-3 w-3" viewBox="0 0 16 16">
+																	<path d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z"/>
+																</svg>
+															</span>
+															<span x-show="accrodion1">
+																<svg xmlns="http://www.w3.org/2000/svg"  fill="currentColor" class="bi bi-caret-down-fill h-3 w-3" viewBox="0 0 16 16">
+																	<path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"/>
+																</svg>
+															</span>
+														</div>
+													</div>
+													<ul x-show="accrodion1" class="space-y-1 pt-3">
+														<div class=" flex items-center space-x-2">
+															<!-- ==  == -->
+															<a class="bg-white inline-block rounded text-sm border hover:shadow-lg hover:bg-gray-100 px-3 py-1 duration-200 border-gray-400 shadow-inner font-semibold hover:underline text-gray-600" href="#">Communication</a>
+															<!-- ==  == -->
+															<a class="bg-white inline-block rounded text-sm border hover:shadow-lg hover:bg-gray-100 px-3 py-1 duration-200 border-gray-400 shadow-inner font-semibold hover:underline text-gray-600" href="#">Featured</a>
+															<!-- ==  == -->
+															<a class="bg-white inline-block rounded text-sm border hover:shadow-lg hover:bg-gray-100 px-3 py-1 duration-200 border-gray-400 shadow-inner font-semibold hover:underline text-gray-600" href="#">Productivity</a>
+															<!-- ==  == -->
+															<a class="bg-white inline-block rounded text-sm border hover:shadow-lg hover:bg-gray-100 px-3 py-1 duration-200 border-gray-400 shadow-inner font-semibold hover:underline text-gray-600" href="#">Voice & Video</a>
+															<!-- ==  == -->
+															<a class="bg-white inline-block rounded text-sm border hover:shadow-lg hover:bg-gray-100 px-3 py-1 duration-200 border-gray-400 shadow-inner font-semibold hover:underline text-gray-600" href="#">Working from home</a>
+														</div>
+													</ul>
+												</div>
+											</div>
+											<!-- ==  == -->
+											<div class=" border-t pt-8 text-sm">
+												<p class="pb-3 text-gray-500">Slack conducts a brief review of apps in our App Directory and does not endorse or certify these apps. If you encounter inappropriate content or behavior please report it.</p>
+												<a class="block flex items-center pt-1 space-x-1 hover:underline text-red-600" href="#">
+													<span >
+														<svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+															<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 21v-4m0 0V5a2 2 0 012-2h6.5l1 1H21l-3 6 3 6h-8.5l-1-1H5a2 2 0 00-2 2zm9-13.5V9" />
+														</svg>
+													</span>
+													<span>Report this app</span>
+												</a>
+											</div>
+										</div>
+									</div>
+									<div x-show="tab==='tab3'" class="lg:px-8 px-0 p-8">
+										<!-- ==  == -->
+										<div class=" flex items-center justify-between my-10">
+											<h3 class="font-semibold">Download security and compliance information</h3>
+											<!-- ==  == -->
+											<a class="bg-white inline-block rounded text-sm border hover:shadow hover:bg-gray-100 px-3 py-1 duration-200 border-gray-400 shadow-inner font-semibold text-gray-600" href="#">Download CSV</a>
+										</div>
+										<!-- ==  == -->
+										<div class="py-8 border-t">
+											<p>Review the details to better understand this app’s security practices. To learn more about assessing apps for your workspace visit our <a class=" text-blue-600 hover:underline" href="#"> Help Center</a>.</p>
+										</div>
+										<!-- == 001 == -->
+										<div x-data="{accrodion1:false}">
+											<div @click="accrodion1= !accrodion1" class="w-full text-gray-600 border-b px-0 p-3 cursor-pointer">
+												<div class=" flex justify-between items-center w-full">
+													<h4 class="text-lg font-semibold">General</h4>
+													<div>
+														<span x-show="!accrodion1">
+															<svg xmlns="http://www.w3.org/2000/svg"  fill="currentColor" class="bi bi-caret-right-fill h-4 w-4" viewBox="0 0 16 16">
+																<path d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z"/>
+															</svg>
+														</span>
+														<span x-show="accrodion1">
+															<svg xmlns="http://www.w3.org/2000/svg"  fill="currentColor" class="bi bi-caret-down-fill h-3 w-3" viewBox="0 0 16 16">
+																<path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"/>
+															</svg>
+														</span>
+													</div>
+												</div>
+												<div x-show="accrodion1" class="space-y-6 py-6">
+													<div class="grid grid-cols-2">
+														<p class="font-medium">Developer</p>
+														<p>Loom</p>
+													</div>
+													<div class="grid grid-cols-2">
+														<p class="font-medium">Company headquarters location</p>
+														<p>United States</p>
+													</div>
+													<div class="grid grid-cols-2">
+														<p class="font-medium">Terms of service</p>
+														<a class=" text-blue-500 hover:underline" href="#"> https://www.loom.com/terms</a>
+													</div>
+												</div>
+											</div>
+										</div>
+										<!-- == 002 == -->
+										<div x-data="{accrodion1:false}">
+											<div @click="accrodion1= !accrodion1" class="w-full text-gray-600 border-b px-0 p-3 cursor-pointer">
+												<div class=" flex justify-between items-center w-full">
+													<h4 class="text-lg font-semibold">Privacy & data governance</h4>
+													<div>
+														<span x-show="!accrodion1">
+															<svg xmlns="http://www.w3.org/2000/svg"  fill="currentColor" class="bi bi-caret-right-fill h-4 w-4" viewBox="0 0 16 16">
+																<path d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z"/>
+															</svg>
+														</span>
+														<span x-show="accrodion1">
+															<svg xmlns="http://www.w3.org/2000/svg"  fill="currentColor" class="bi bi-caret-down-fill h-3 w-3" viewBox="0 0 16 16">
+																<path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"/>
+															</svg>
+														</span>
+													</div>
+												</div>
+												<div x-show="accrodion1" class="space-y-6 py-6">
+													<div class="grid grid-cols-2">
+														<p class="font-medium ">Data retention policy</p>
+														<p >We do not have a data retention schedule or policy that can be applied to individual folders or the Workspace. However, videos have two states: archived and deleted. Users may archive a video, until the user recovers the video or marks it for deletion. There is no expiration date, the video will be recoverable from the archive folder until the user deletes it. Users may also delete a video, which is a permanent deletion and is unrecoverable. The video is removed from our system within 24-48 hours after the user has deleted it.</p>
+													</div>
+													<div class="grid grid-cols-2 ">
+														<p class="font-medium">Data archiving and removal policy</p>
+														<p>Upon video deletion, the video itself is immediately scheduled for removal from all systems, including any of our storage layers as well as in our caching systems. This action is permanent and irreversible and the video is removed within 24-48 hours. User account deletion results in removal within 24 hours of issuing the request. Some data may exist in our backups (metadata and account data) for up to 30 days after the deletion request has been issued. Once a user account is deleted, personal data and video data are permanently deleted after this 30 day period.</p>
+													</div>
+													<div class="grid grid-cols-2">
+														<p class="font-medium">Data storage policy</p>
+														<p>Upon video deletion, the video itself is immediately scheduled for removal from all systems, including any of our storage layers as well as in our caching systems. This action is permanent and irreversible and the video is removed within 24-48 hours. User account deletion results in removal within 24 hours of issuing the request. Some data may exist in our backups (metadata and account data) for up to 30 days after the deletion request has been issued. Once a user account is deleted, personal data and video data are permanently deleted after this 30 day period.</p>
+													</div>
+													<div class="grid grid-cols-2">
+														<p class="font-medium">Data center location(s)</p>
+														<p>United States</p>
+													</div>
+													<div class="grid grid-cols-2">
+														<p class="font-medium">Data hosting details</p>
+														<p> Cloud hosted</p>
+													</div>
+													<div class="grid grid-cols-2">
+														<p class="font-medium">Data hosting company</p>
+														<p> AWS</p>
+													</div>
+													<div class="grid grid-cols-2">
+														<p class="font-medium">App/service has sub-processors</p>
+														<p> yes</p>
+													</div>
+													<div class="grid grid-cols-2">
+														<p class="font-medium">Guidelines for sub-processors</p>
+														<a class=" text-blue-500 hover:underline" href="#">https://loom.com/privacy</a>
+													</div>
+												</div>
+											</div>
+										</div>
+										<!-- == 003 == -->
+										<div x-data="{accrodion1:false}">
+											<div @click="accrodion1= !accrodion1" class="w-full text-gray-600 border-b px-0 p-3 cursor-pointer">
+												<div class=" flex justify-between items-center w-full">
+													<h4 class="text-lg font-semibold">Certifications & compliance</h4>
+													<div>
+														<span x-show="!accrodion1">
+															<svg xmlns="http://www.w3.org/2000/svg"  fill="currentColor" class="bi bi-caret-right-fill h-4 w-4" viewBox="0 0 16 16">
+																<path d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z"/>
+															</svg>
+														</span>
+														<span x-show="accrodion1">
+															<svg xmlns="http://www.w3.org/2000/svg"  fill="currentColor" class="bi bi-caret-down-fill h-3 w-3" viewBox="0 0 16 16">
+																<path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"/>
+															</svg>
+														</span>
+													</div>
+												</div>
+												<div x-show="accrodion1" class="space-y-6 py-6">
+													<div class="grid grid-cols-2">
+														<p class="font-medium">SOC attestation</p>
+														<a class=" text-blue-500 hover:underline" href="#">https://loom.com/security</a>
+													</div>
+													<div class="grid grid-cols-2">
+														<p class="font-medium">COPPA compliance</p>
+														<a class=" text-blue-500 hover:underline" href="#">https://loom.com/privacy-policy</a>
+													</div>
+													<div class="grid grid-cols-2">
+														<p class="font-medium">Privacy Shield notice</p>
+														<a class=" text-blue-500 hover:underline" href="#">https://loom.com/privacy-policy</a>
+													</div>
+													<div class="grid grid-cols-2">
+														<p class="font-medium">GDPR commitment</p>
+														<a class=" text-blue-500 hover:underline" href="#">https://loom.com/privacy-policy</a>
+													</div>
+													<div class="grid grid-cols-2">
+														<p class="font-medium">Data deletion request procedure</p>
+														<p>Admins can remove Loom accounts from their Workspace through their Workspace settings. Removed members will no longer have access to any of the Workspace's content. If you're the only member in your Workspace, you can remove your own account by leaving the Workspace. You can also permanently delete your account through your account settings. ⚠️ Please keep in mind: this action will permanently delete all your videos and is not reversible. Screenshots in addition to the information above here: <a class=" text-blue-500 hover:underline" href="#">https://support.loom.com/hc/en-us/articles/360007580997-How-to-deactivate-or-delete-your-Loom-account</a></p>
+													</div>
+													<div class="grid grid-cols-2">
+														<p class="font-medium">HIPAA compliant</p>
+														<p>no<br><br>While this app may offer HIPAA compliance, Slack does not have a business associate agreement with any third-party application providers, including those in the Slack App Directory, so you are responsible for validating the provider's compliance and executing an appropriate agreement before enabling.</p>
+													</div>
+												</div>
+											</div>
+										</div>
+										<!-- == 004 == -->
+										<div x-data="{accrodion1:false}">
+											<div @click="accrodion1= !accrodion1" class="w-full text-gray-600 border-b px-0 p-3 cursor-pointer">
+												<div class=" flex justify-between items-center w-full">
+													<h4 class="text-lg font-semibold">Security</h4>
+													<div>
+														<span x-show="!accrodion1">
+															<svg xmlns="http://www.w3.org/2000/svg"  fill="currentColor" class="bi bi-caret-right-fill h-4 w-4" viewBox="0 0 16 16">
+																<path d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z"/>
+															</svg>
+														</span>
+														<span x-show="accrodion1">
+															<svg xmlns="http://www.w3.org/2000/svg"  fill="currentColor" class="bi bi-caret-down-fill h-3 w-3" viewBox="0 0 16 16">
+																<path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"/>
+															</svg>
+														</span>
+													</div>
+												</div>
+												<div x-show="accrodion1" class="space-y-6 py-6">
+													<div class="grid grid-cols-2 gap-4">
+														<p class="font-medium ">Date of latest pen test</p>
+														<p>2020-10-01</p>
+													</div>
+													<div class="grid grid-cols-2 gap-4 ">
+														<p class="font-medium">Executive summary is available to potential customers upon reques</p>
+														<p>yes</p>
+													</div>
+													<div class="grid grid-cols-2 gap-4">
+														<p class="font-medium">Supports Single Sign On (SSO) with the following providers</p>
+														<p>Okta, OneLogin, Auth0, Azure, GSuite</p>
+													</div>
+													<div class="grid grid-cols-2 gap-4">
+														<p class="font-medium">Supports Security Assertion Markup Language (SAML)</p>
+														<p>yes</p>
+													</div>
+													<div class="grid grid-cols-2 gap-4">
+														<p class="font-medium">Has a dedicated security team</p>
+														<p>yes</p>
+													</div>
+													<div class="grid grid-cols-2 gap-4">
+														<p class="font-medium">Contact for security issues</p>
+														<p> security@loom.com</p>
+													</div>
+													<div class="grid grid-cols-2 gap-4">
+														<p class="font-medium">Has a vulnerability disclosure program</p>
+														<p> yes</p>
+													</div>
+													<div class="grid grid-cols-2 gap-4">
+														<p class="font-medium">Vulnerability disclosure program URL</p>
+														<a class=" text-blue-500 hover:underline" href="#"> https://support.loom.com/hc/en-us/articles/360018430698</a>
+													</div>
+													<div class="grid grid-cols-2 gap-4">
+														<p class="font-medium">Vulnerability disclosure program covers Slack app</p>
+														<p>no</p>
+													</div>
+													<div class="grid grid-cols-2 gap-4">
+														<p class="font-medium">Has a bug bounty program</p>
+														<p>yes</p>
+													</div>
+													<div class="grid grid-cols-2 gap-4">
+														<p class="font-medium">Bug bounty program URL</p>
+														<a class=" text-blue-500 hover:underline" href="#">https://support.loom.com/hc/en-us/articles/360018430698</a>
+													</div>
+													<div class="grid grid-cols-2 gap-4">
+														<p class="font-medium">Requires third party authorization/connections</p>
+														<p>yes</p>
+													</div>
+												</div>
+											</div>
+										</div>									<!-- ==  == -->
+										<div class=" mt-10">
+											<h3 class="pb-5 text-xl font-semibold text-black">Scopes</h3>
+											<div x-data="{accrodion1:false}" @click.away="accrodion1=false">
+												<div class="flex items-start space-x-4 text-gray-600">
+													<div class="pt-1">
+														<svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-person w-6 h-6" viewBox="0 0 16 16">
+															<path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z"/>
+														</svg>
+													</div>
+													<div @click="accrodion1= !accrodion1" class=" w-full border-b pl-0 pt-1 p-3 cursor-pointer">
+														<div class=" flex justify-between items-center w-full">
+															<h4 :class="{'text-gray-900 font-medium' : accrodion1=== true}">Loom has 14 User Token Scopes</h4>
+															<div>
+																<span x-show="!accrodion1">
+																	<svg xmlns="http://www.w3.org/2000/svg"  fill="currentColor" class="bi bi-caret-right-fill h-3 w-3" viewBox="0 0 16 16">
+																		<path d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z"/>
+																	</svg>
+																</span>
+																<span x-show="accrodion1">
+																	<svg xmlns="http://www.w3.org/2000/svg"  fill="currentColor" class="bi bi-caret-down-fill h-3 w-3" viewBox="0 0 16 16">
+																		<path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"/>
+																	</svg>
+																</span>
+															</div>
+														</div>
+														<ul x-show="accrodion1" class="space-y-1 pt-3">
+															<li>chat:write:bot, chat:write:user, team:read, identity.basic, identity.avatar, identity.email, identity.team, channels:read, groups:read, im:read, mpim:read, users:read, users:read.email, im:write</li>
+														</ul>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+		</main>
+		<!-- ==Footer Section == -->
+		<footer class=" border-t mt-20">
+			<div class=" md:hidden block py-10">
+				<div>
+					<!-- ==001 == -->
+					<div x-data="{accrodion1:false}" @click.away="accrodion1=false" class="p-4 py-3 md:p-0 md:border-0 border border-b-0">
+						<div  @click="accrodion1= !accrodion1" class=" cursor-pointer flex justify-between items-center">
+							<h4 class="text-red-500 md:pb-4 text-xs font-semibold">USING SLACK</h4>
+							<div>
+								<span x-show="!accrodion1">
+									<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-red-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+										<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+									  </svg>
+								</span>
+								<span x-show="accrodion1">
+									<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-red-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+										<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+									  </svg>
+								</span>
+							</div>
+						</div>
+						<ul x-show.transition="accrodion1" class="md:p-0 p-3 space-y-1">
+							<li>
+								<a class="text-gray-500 hover:text-gray-400 text-sm" href="#">Product</a>
+							</li>
+							<li>
+								<a class="text-gray-500 hover:text-gray-400 text-sm" href="#">Enterprise</a>
+							</li>
+							<li>
+								<a class="text-gray-500 hover:text-gray-400 text-sm" href="#">Pricing</a>
+							</li>
+							<li>
+								<a class="text-gray-500 hover:text-gray-400 text-sm" href="#">Support</a>
+							</li>
+							<li>
+								<a class="text-gray-500 hover:text-gray-400 text-sm" href="#">Slack Guides</a>
+							</li>
+							<li>
+								<a class="text-gray-500 hover:text-gray-400 text-sm" href="#">App Directory</a>
+							</li>
+							<li>
+								<a class="text-gray-500 hover:text-gray-400 text-sm" href="#">API</a>
+							</li>
+						</ul>
+					</div>
+					<!-- ==002 == -->
+					<div x-data="{accrodion2:false}"@click.away="accrodion2=false" class="p-4 py-3 md:p-0 md:border-0 border border-b-0">
+						<div @click="accrodion2= !accrodion2" class=" cursor-pointer flex justify-between items-center">
+							<h4 class="text-pink-500 md:pb-4 text-xs font-semibold flex">SLACK
+								<span>
+									<svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+										<path fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd" />
+									  </svg>
+								</span>
+							</h4>
+							<div>
+								<span x-show="!accrodion2">
+									<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-pink-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+										<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+									  </svg>
+								</span>
+								<span x-show="accrodion2">
+									<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-pink-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+										<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+									  </svg>
+								</span>
+							</div>
+						</div>
+						<ul x-show.transition="accrodion2" class="md:p-0 p-3 space-y-1">
+							<li>
+								<a class="text-gray-500 hover:text-gray-400 text-sm" href="#">Jobs</a>
+							</li>
+							<li>
+								<a class="text-gray-500 hover:text-gray-400 text-sm" href="#">Customers</a>
+							</li>
+							<li>
+								<a class="text-gray-500 hover:text-gray-400 text-sm" href="#">Developers</a>
+							</li>
+							<li>
+								<a class="text-gray-500 hover:text-gray-400 text-sm" href="#">Events</a>
+							</li>
+							<li>
+								<a class="text-gray-500 hover:text-gray-400 text-sm" href="#">Blog</a>
+							</li>
+						</ul>
+					</div>
+					<!-- ==003 == -->
+					<div x-data="{accrodion3:false}"@click.away="accrodion3=false" class="p-4 py-3 md:p-0 md:border-0 border border-b-0">
+						<div @click="accrodion3= !accrodion3" class=" cursor-pointer flex justify-between items-center">
+							<h4 class="text-green-500 md:pb-4 text-xs font-semibold flex">LEGAL</h4>
+							<div>
+								<span x-show="!accrodion3">
+									<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+										<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+									  </svg>
+								</span>
+								<span x-show="accrodion3">
+									<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+										<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+									  </svg>
+								</span>
+							</div>
+						</div>
+						<ul x-show.transition="accrodion3" class="md:p-0 p-3 space-y-1">
+							<li>
+								<a class="text-gray-500 hover:text-gray-400 text-sm" href="#">Privacy</a>
+							</li>
+							<li>
+								<a class="text-gray-500 hover:text-gray-400 text-sm" href="#">Security</a>
+							</li>
+							<li>
+								<a class="text-gray-500 hover:text-gray-400 text-sm" href="#">Terms of Service</a>
+							</li>
+							<li>
+								<a class="text-gray-500 hover:text-gray-400 text-sm" href="#">Policies</a>
+							</li>
+						</ul>
+					</div>
+					<!-- ==004 == -->
+					<div x-data="{accrodion4:false}"@click.away="accrodion4=false" class="p-4 py-3 md:p-0 md:border-0 border">
+						<div @click="accrodion4= !accrodion4" class=" cursor-pointer flex justify-between items-center">
+							<h4 class="text-blue-500 md:pb-4 text-xs font-semibold flex">HANDY LINKS</h4>
+							<div>
+								<span x-show="!accrodion4">
+									<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+										<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+									  </svg>
+								</span>
+								<span x-show="accrodion4">
+									<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+										<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+									  </svg>
+								</span>
+							</div>
+						</div>
+						<ul x-show.transition="accrodion4" class="md:p-0 p-3 space-y-1">
+							<li>
+								<a class="text-gray-500 hover:text-gray-400 text-sm" href="#">Download desktop app</a>
+							</li>
+							<li>
+								<a class="text-gray-500 hover:text-gray-400 text-sm" href="#">Download mobile app</a>
+							</li>
+							<li>
+								<a class="text-gray-500 hover:text-gray-400 text-sm" href="#">Brand Guidelines</a>
+							</li>
+							<li>
+								<a class="text-gray-500 hover:text-gray-400 text-sm" href="#">Slack at Work</a>
+							</li>
+							<li>
+								<a class="text-gray-500 hover:text-gray-400 text-sm" href="#">Status</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div class=" md:block hidden">
+				<div class="grid md:grid-cols-4 gap-4 xl:px-40 sm:px-8 px-4 py-10">
+					<!-- ==001 == -->
+					<div>
+						<h4 class="text-red-500 pb-4 text-xs font-semibold">USING SLACK</h4>
+						<ul class=" space-y-1">
+							<li>
+								<a class="text-gray-500 hover:text-gray-400 text-sm" href="#">Product</a>
+							</li>
+							<li>
+								<a class="text-gray-500 hover:text-gray-400 text-sm" href="#">Enterprise</a>
+							</li>
+							<li>
+								<a class="text-gray-500 hover:text-gray-400 text-sm" href="#">Pricing</a>
+							</li>
+							<li>
+								<a class="text-gray-500 hover:text-gray-400 text-sm" href="#">Support</a>
+							</li>
+							<li>
+								<a class="text-gray-500 hover:text-gray-400 text-sm" href="#">Slack Guides</a>
+							</li>
+							<li>
+								<a class="text-gray-500 hover:text-gray-400 text-sm" href="#">App Directory</a>
+							</li>
+							<li>
+								<a class="text-gray-500 hover:text-gray-400 text-sm" href="#">API</a>
+							</li>
+						</ul>
+					</div>
+					<!-- ==002 == -->
+					<div>
+						<h4 class="text-pink-500 pb-4 text-xs font-semibold flex">SLACK
+							<span>
+								<svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+									<path fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd" />
+								  </svg>
+							</span>
+						</h4>
+						<ul class=" space-y-1">
+							<li>
+								<a class="text-gray-500 hover:text-gray-400 text-sm" href="#">Jobs</a>
+							</li>
+							<li>
+								<a class="text-gray-500 hover:text-gray-400 text-sm" href="#">Customers</a>
+							</li>
+							<li>
+								<a class="text-gray-500 hover:text-gray-400 text-sm" href="#">Developers</a>
+							</li>
+							<li>
+								<a class="text-gray-500 hover:text-gray-400 text-sm" href="#">Events</a>
+							</li>
+							<li>
+								<a class="text-gray-500 hover:text-gray-400 text-sm" href="#">Blog</a>
+							</li>
+						</ul>
+					</div>
+					<!-- ==003 == -->
+					<div>
+						<h4 class="text-green-500 pb-4 text-xs font-semibold flex">LEGAL</h4>
+						<ul class=" space-y-1">
+							<li>
+								<a class="text-gray-500 hover:text-gray-400 text-sm" href="#">Privacy</a>
+							</li>
+							<li>
+								<a class="text-gray-500 hover:text-gray-400 text-sm" href="#">Security</a>
+							</li>
+							<li>
+								<a class="text-gray-500 hover:text-gray-400 text-sm" href="#">Terms of Service</a>
+							</li>
+							<li>
+								<a class="text-gray-500 hover:text-gray-400 text-sm" href="#">Policies</a>
+							</li>
+						</ul>
+					</div>
+					<!-- ==004 == -->
+					<div>
+						<h4 class="text-blue-500 pb-4 text-xs font-semibold flex">HANDY LINKS</h4>
+						<ul class=" space-y-1">
+							<li>
+								<a class="text-gray-500 hover:text-gray-400 text-sm" href="#">Download desktop app</a>
+							</li>
+							<li>
+								<a class="text-gray-500 hover:text-gray-400 text-sm" href="#">Download mobile app</a>
+							</li>
+							<li>
+								<a class="text-gray-500 hover:text-gray-400 text-sm" href="#">Brand Guidelines</a>
+							</li>
+							<li>
+								<a class="text-gray-500 hover:text-gray-400 text-sm" href="#">Slack at Work</a>
+							</li>
+							<li>
+								<a class="text-gray-500 hover:text-gray-400 text-sm" href="#">Status</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div class="bg-gray-100 flex justify-between xl:px-40 sm:px-8 px-4 py-4">
+				<a class="text-gray-500" href="index.html">
+					<svg xmlns="http://www.w3.org/2000/svg"fill="currentColor" class="bi bi-slack h-8 w-8" viewBox="0 0 16 16">
+						<path d="M3.362 10.11c0 .926-.756 1.681-1.681 1.681S0 11.036 0 10.111C0 9.186.756 8.43 1.68 8.43h1.682v1.68zm.846 0c0-.924.756-1.68 1.681-1.68s1.681.756 1.681 1.68v4.21c0 .924-.756 1.68-1.68 1.68a1.685 1.685 0 0 1-1.682-1.68v-4.21zM5.89 3.362c-.926 0-1.682-.756-1.682-1.681S4.964 0 5.89 0s1.68.756 1.68 1.68v1.682H5.89zm0 .846c.924 0 1.68.756 1.68 1.681S6.814 7.57 5.89 7.57H1.68C.757 7.57 0 6.814 0 5.89c0-.926.756-1.682 1.68-1.682h4.21zm6.749 1.682c0-.926.755-1.682 1.68-1.682.925 0 1.681.756 1.681 1.681s-.756 1.681-1.68 1.681h-1.681V5.89zm-.848 0c0 .924-.755 1.68-1.68 1.68A1.685 1.685 0 0 1 8.43 5.89V1.68C8.43.757 9.186 0 10.11 0c.926 0 1.681.756 1.681 1.68v4.21zm-1.681 6.748c.926 0 1.682.756 1.682 1.681S11.036 16 10.11 16s-1.681-.756-1.681-1.68v-1.682h1.68zm0-.847c-.924 0-1.68-.755-1.68-1.68 0-.925.756-1.681 1.68-1.681h4.21c.924 0 1.68.756 1.68 1.68 0 .926-.756 1.681-1.68 1.681h-4.21z"/>
+					  </svg>
+				</a>
+				<div class=" flex space-x-4">
+					<a href="#" class=" text-gray-500 hover:text-gray-400">Contact Us</a>
+					<a href="#" class=" text-gray-500 hover:text-blue-400">
+						<svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-twitter h-5 w-5" viewBox="0 0 16 16">
+							<path d="M5.026 15c6.038 0 9.341-5.003 9.341-9.334 0-.14 0-.282-.006-.422A6.685 6.685 0 0 0 16 3.542a6.658 6.658 0 0 1-1.889.518 3.301 3.301 0 0 0 1.447-1.817 6.533 6.533 0 0 1-2.087.793A3.286 3.286 0 0 0 7.875 6.03a9.325 9.325 0 0 1-6.767-3.429 3.289 3.289 0 0 0 1.018 4.382A3.323 3.323 0 0 1 .64 6.575v.045a3.288 3.288 0 0 0 2.632 3.218 3.203 3.203 0 0 1-.865.115 3.23 3.23 0 0 1-.614-.057 3.283 3.283 0 0 0 3.067 2.277A6.588 6.588 0 0 1 .78 13.58a6.32 6.32 0 0 1-.78-.045A9.344 9.344 0 0 0 5.026 15z"/>
+						  </svg>
+					</a>
+					<a href="#" class=" text-gray-500 hover:text-red-500">
+						<svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-youtube h-5 w-5" viewBox="0 0 16 16">
+							<path d="M8.051 1.999h.089c.822.003 4.987.033 6.11.335a2.01 2.01 0 0 1 1.415 1.42c.101.38.172.883.22 1.402l.01.104.022.26.008.104c.065.914.073 1.77.074 1.957v.075c-.001.194-.01 1.108-.082 2.06l-.008.105-.009.104c-.05.572-.124 1.14-.235 1.558a2.007 2.007 0 0 1-1.415 1.42c-1.16.312-5.569.334-6.18.335h-.142c-.309 0-1.587-.006-2.927-.052l-.17-.006-.087-.004-.171-.007-.171-.007c-1.11-.049-2.167-.128-2.654-.26a2.007 2.007 0 0 1-1.415-1.419c-.111-.417-.185-.986-.235-1.558L.09 9.82l-.008-.104A31.4 31.4 0 0 1 0 7.68v-.123c.002-.215.01-.958.064-1.778l.007-.103.003-.052.008-.104.022-.26.01-.104c.048-.519.119-1.023.22-1.402a2.007 2.007 0 0 1 1.415-1.42c.487-.13 1.544-.21 2.654-.26l.17-.007.172-.006.086-.003.171-.007A99.788 99.788 0 0 1 7.858 2h.193zM6.4 5.209v4.818l4.157-2.408L6.4 5.209z"/>
+						</svg>
+					</a>
+				</div>
+			</div>
+		</footer>
+		<!--  Alpine Js -->
+		<script src="js/alpine.min.js" defer></script>
+		<!--  jQuery and Bootstrap Bundle (includes Popper) -->
+	</body>
+	
+</html>
+
+
+
+
+
+
+
